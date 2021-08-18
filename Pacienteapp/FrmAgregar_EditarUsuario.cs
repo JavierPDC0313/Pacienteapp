@@ -14,5 +14,62 @@ namespace Pacienteapp
         {
             InitializeComponent();
         }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            if (Validations() == false)
+            {
+
+            }
+        }
+
+        private bool Validations()
+        {
+            try
+            {
+                bool isEmpty = true;
+
+                if (TxtNombre.Text == "")
+                {
+                    MessageBox.Show("Debe introducir un nombre", "Advertencia");
+                }
+                else if (TxtApellidoUsuario.Text == "")
+                {
+                    MessageBox.Show("Debe introducir un apellido", "Advertencia");
+                }
+                else if(TxtCorreoUsuario.Text == "")
+                {
+                    MessageBox.Show("Debe introducir un correo", "Advertencia");
+                }
+                else if(TxtContraseña.Text == "")
+                {
+                    MessageBox.Show("Debe introducir una contraseña", "Advertencia");
+                }
+                else if(TxtConfirmarContraseña.Text == "")
+                {
+                    MessageBox.Show("Debe confirmar la contraseña", "Advertencia");
+                }
+                else if(TxtConfirmarContraseña.Text != TxtContraseña.Text)
+                {
+                    MessageBox.Show("Ambas contraseñas deben coincidir", "Advertencia");
+                }
+                else if(CbxTipoUsuario.SelectedItem.Value == null)
+                {
+                    MessageBox.Show("Debe seleccionar un tipo de usuario", "Advertencia");
+                }
+                else
+                {
+                    isEmpty = false;
+                }
+
+                return isEmpty;
+            }
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error", "Advertencia");
+
+                return true;
+            }
+        }
     }
 }

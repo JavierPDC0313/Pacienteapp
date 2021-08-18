@@ -88,6 +88,7 @@ namespace Pacienteapp
             this.BtnEditar.Text = "Editar Usuario";
             this.BtnEditar.UseVisualStyleBackColor = true;
             this.BtnEditar.Visible = false;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // BtnEliminar
             // 
@@ -113,6 +114,7 @@ namespace Pacienteapp
             this.BtnAgregar.TabIndex = 4;
             this.BtnAgregar.Text = "Agregar Usuario";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // FrmMantenimientoUsuarios
             // 
@@ -122,6 +124,7 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmMantenimientoUsuarios";
             this.Text = "Usuarios";
+            this.Activated += new System.EventHandler(this.FrmMantenimientoUsuarios_Activated);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).EndInit();
