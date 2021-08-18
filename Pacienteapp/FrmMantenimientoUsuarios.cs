@@ -12,7 +12,7 @@ namespace Pacienteapp
 {
     public sealed partial class FrmMantenimientoUsuarios : Form
     {
-        private int id;
+        private int? id;
 
         private bool isEdit;
 
@@ -24,11 +24,15 @@ namespace Pacienteapp
             Agregar_Editar = new FrmAgregar_EditarUsuario();
         }
 
-        public FrmMantenimientoUsuarios Instancia { get; set; } = new FrmMantenimientoUsuarios();
+        public static FrmMantenimientoUsuarios Instancia { get; set; } = new FrmMantenimientoUsuarios();
 
+        #region Events
         private void DgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                id = Convert.ToInt32(DgvUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString());
+            }
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
@@ -46,9 +50,44 @@ namespace Pacienteapp
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            isEdit = true;
-            Agregar_Editar.Show();
-            this.Hide();
+            if (id != null)
+            {
+                isEdit = true;
+                Agregar_Editar.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un campo que editar", "Advertencia");
+            }
         }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            if (id != null)
+            {
+                DialogResult result = MessageBox.Show("Estás seguro de que deseas eliminar este usuario", "Advertencia", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un campo que eliminar", "Advertencia");
+            }
+        }
+        #endregion
+
+        #region Methods
+
+        public bool GetIsEdit()
+        {
+            return isEdit;
+        }
+
+        #endregion
+
     }
 }

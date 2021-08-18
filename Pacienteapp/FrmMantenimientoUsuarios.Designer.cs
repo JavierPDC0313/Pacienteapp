@@ -102,6 +102,7 @@ namespace Pacienteapp
             this.BtnEliminar.Text = "Eliminar Usuario";
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Visible = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnAgregar
             // 

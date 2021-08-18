@@ -20,9 +20,18 @@ namespace Pacienteapp
             if (Validations() == false)
             {
 
+                if (GetIsEdit() == false)
+                {
+
+                }
+                else
+                {
+
+                }
             }
         }
 
+        #region Methods
         private bool Validations()
         {
             try
@@ -71,5 +80,16 @@ namespace Pacienteapp
                 return true;
             }
         }
+
+        private bool GetIsEdit()
+        {
+            bool Edit;
+
+            Edit = FrmMantenimientoUsuarios.Instancia.GetIsEdit();
+
+            return Edit;
+        }
+
+        #endregion
     }
 }
