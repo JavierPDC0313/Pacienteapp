@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pacienteapp", "Pacienteapp\Pacienteapp.csproj", "{785E6EAE-2CDB-4008-952A-DA2DF9F1B7B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailHandler", "EmailHandler\EmailHandler.csproj", "{BB836CC0-096F-429D-ADE6-9637104FE8BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailHandler", "EmailHandler\EmailHandler.csproj", "{BB836CC0-096F-429D-ADE6-9637104FE8BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{910CA74A-A13F-4504-A347-831FA17F237B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessLayer", "BussinessLayer\BussinessLayer.csproj", "{E5E65CBA-DB5E-4E9D-8A32-A5A8220C6C07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{BB836CC0-096F-429D-ADE6-9637104FE8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB836CC0-096F-429D-ADE6-9637104FE8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB836CC0-096F-429D-ADE6-9637104FE8BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910CA74A-A13F-4504-A347-831FA17F237B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910CA74A-A13F-4504-A347-831FA17F237B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910CA74A-A13F-4504-A347-831FA17F237B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910CA74A-A13F-4504-A347-831FA17F237B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5E65CBA-DB5E-4E9D-8A32-A5A8220C6C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5E65CBA-DB5E-4E9D-8A32-A5A8220C6C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5E65CBA-DB5E-4E9D-8A32-A5A8220C6C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5E65CBA-DB5E-4E9D-8A32-A5A8220C6C07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
