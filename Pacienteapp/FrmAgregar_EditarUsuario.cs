@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Pacienteapp.CustomControlItems;
 
 namespace Pacienteapp
 {
@@ -31,12 +32,19 @@ namespace Pacienteapp
             }
         }
 
+        private void FrmAgregar_EditarUsuario_Load(object sender, EventArgs e)
+        {
+            LoadComboBox();
+        }
+
         #region Methods
         private bool Validations()
         {
             try
             {
                 bool isEmpty = true;
+
+                ComboBoxItem TipoContacto = CbxTipoUsuario.SelectedItem as ComboBoxItem;
 
                 if (TxtNombre.Text == "")
                 {
@@ -62,7 +70,7 @@ namespace Pacienteapp
                 {
                     MessageBox.Show("Ambas contraseñas deben coincidir", "Advertencia");
                 }
-                else if(CbxTipoUsuario.SelectedItem.Value == null)
+                else if(TipoContacto.Value == null)
                 {
                     MessageBox.Show("Debe seleccionar un tipo de usuario", "Advertencia");
                 }
@@ -88,6 +96,33 @@ namespace Pacienteapp
             Edit = FrmMantenimientoUsuarios.Instancia.GetIsEdit();
 
             return Edit;
+        }
+
+        private void LoadComboBox()
+        {
+            ComboBoxItem opcionPorDefecto = new ComboBoxItem
+            {
+                Text = "Seleccione una opcion...",
+                Value = null
+            };
+
+            CbxTipoUsuario.Items.Add(opcionPorDefecto);
+            CbxTipoUsuario.SelectedItem = opcionPorDefecto;
+
+            ComboBoxItem Administrador = new ComboBoxItem
+            {
+                Text = "Administrador",
+                Value = 1
+            };
+
+            ComboBoxItem Medico = new ComboBoxItem
+            {
+                Text = "Médico",
+                Value = 2
+            };
+
+            CbxTipoUsuario.Items.Add(Administrador);
+            CbxTipoUsuario.Items.Add(Medico);
         }
 
         #endregion

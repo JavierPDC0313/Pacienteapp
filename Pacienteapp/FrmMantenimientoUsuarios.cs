@@ -87,6 +87,10 @@ namespace Pacienteapp
             return isEdit;
         }
 
+        public int GetId()
+        {
+            return id.Value;
+        }
         #endregion
 
     }
