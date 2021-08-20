@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pacienteapp", "Pacienteapp\Pacienteapp.csproj", "{785E6EAE-2CDB-4008-952A-DA2DF9F1B7B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailHandler", "EmailHandler\EmailHandler.csproj", "{BB836CC0-096F-429D-ADE6-9637104FE8BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailHandler", "EmailHandler\EmailHandler.csproj", "{BB836CC0-096F-429D-ADE6-9637104FE8BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLayer", "DatabaseLayer\DatabaseLayer.csproj", "{B4BB7FB4-424F-4419-B859-6F3DEFC2497D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BB836CC0-096F-429D-ADE6-9637104FE8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB836CC0-096F-429D-ADE6-9637104FE8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB836CC0-096F-429D-ADE6-9637104FE8BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4BB7FB4-424F-4419-B859-6F3DEFC2497D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BB7FB4-424F-4419-B859-6F3DEFC2497D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BB7FB4-424F-4419-B859-6F3DEFC2497D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BB7FB4-424F-4419-B859-6F3DEFC2497D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
