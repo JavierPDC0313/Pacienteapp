@@ -1,29 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Pacienteapp.CustomControlItems;
+using BussinessLayer;
+using Database.Models;
 
 namespace Pacienteapp
 {
     public partial class FrmAgregar_EditarUsuario : Form
     {
+        ServicioUsuario _servicio;
+
         public FrmAgregar_EditarUsuario()
         {
             InitializeComponent();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            _servicio = new ServicioUsuario(connection);
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (Validations() == false)
             {
-
                 if (GetIsEdit() == false)
                 {
+                    ComboBoxItem TipoUsuarioSeleccionado = CbxTipoUsuario.SelectedItem as ComboBoxItem;
 
+                    Usuario nuevoUsuario = new Usuario
+                    {
+                        Nombre = TxtNombre.Text,
+                        Apellido = TxtApellidoUsuario.Text,
+                        Correo = TxtCorreoUsuario.Text,
+                        Nombre_Usuario = TxtNombreUsuario.Text,
+                        Contraseña = TxtContraseña.Text,
+                        TipoUsuario = (string)TipoUsuarioSeleccionado.Text
+                    };
+
+                    _servicio.Agregar(nuevoUsuario);
+
+                    MessageBox.Show("Usuario creado con éxito!","Notificación");
                 }
                 else
                 {
@@ -35,6 +60,22 @@ namespace Pacienteapp
         private void FrmAgregar_EditarUsuario_Load(object sender, EventArgs e)
         {
             LoadComboBox();
+
+            if (GetIsEdit() == true)
+            {
+
+                Usuario editUser = new Usuario();
+
+                editUser = _servicio.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
+
+                TxtNombre.Text = editUser.Nombre;
+                TxtApellidoUsuario.Text = editUser.Apellido;
+                TxtCorreoUsuario.Text = editUser.Correo;
+                TxtNombreUsuario.Text = editUser.Nombre_Usuario;
+                TxtContraseña.Text = editUser.Contraseña;
+                TxtConfirmarContraseña.Text = editUser.Contraseña;
+                CbxTipoUsuario.SelectedItem = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
+            }
         }
 
         #region Methods
@@ -73,6 +114,10 @@ namespace Pacienteapp
                 else if(TipoContacto.Value == null)
                 {
                     MessageBox.Show("Debe seleccionar un tipo de usuario", "Advertencia");
+                }
+                else if (_servicio.UserExists(TxtNombreUsuario.Text) == false)
+                {
+                    MessageBox.Show("Este usuario ya existe en el sistema, elije otro nombre", "Advertencia");
                 }
                 else
                 {

@@ -19,8 +19,7 @@ namespace Database.Models
 
         public string Contraseña { get; set; }
 
-        public int TipoUsuario { get; set; }
+        public string TipoUsuario { get; set; }
 
-        public string TipoUsuarioString { get; set; }
     }
 }

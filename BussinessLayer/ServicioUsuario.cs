@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using Database;
 using Database.Models;
@@ -20,6 +21,29 @@ namespace BussinessLayer
             return repository.Agregar(item);
         }
 
-        public 
+        public bool Editar(Usuario item)
+        {
+            return repository.Editar(item);
+        }
+
+        public bool Eliminar(int id)
+        {
+            return repository.Eliminar(id);
+        }
+
+        public DataTable GetAll()
+        {
+            return repository.GetAll();
+        }
+
+        public Usuario GetById(int id)
+        {
+            return repository.GetById(id);
+        }
+
+        public bool UserExists(string nombreUsuario)
+        {
+            return repository.UserExists(nombreUsuario);
+        }
     }
 }

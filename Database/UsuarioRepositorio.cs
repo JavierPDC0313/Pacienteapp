@@ -57,7 +57,7 @@ namespace Database
 
         public DataTable GetAll()
         {
-            SqlDataAdapter query = new SqlDataAdapter("select u.Id, u.Nombre, u.Apellido, u.Correo, u.Nombre_Usuario, u.Contraseña, t.descripcion as TipoContacto from Usuarios u join TipoUsuario t on (u.Id = t.id)", _connection);
+            SqlDataAdapter query = new SqlDataAdapter("select Id, Nombre, Apellido, Correo, Nombre_Usuario, Contraseña, TipoContacto from Usuarios", _connection);
 
             return LoadData(query);
         }
@@ -68,7 +68,7 @@ namespace Database
             {
                 _connection.Open();
 
-                SqlCommand command = new SqlCommand("select u.Id, u.Nombre, u.Apellido, u.Correo, u.Nombre_Usuario, u.Contraseña, t.descripcion as TipoContacto from Usuarios u join TipoUsuario t on (u.Id = t.id) where Id = @id", _connection);
+                SqlCommand command = new SqlCommand("select Id, Nombre, Apellido, Correo, Nombre_Usuario, Contraseña, TipoContacto from Usuarios where Id = @id", _connection);
 
                 command.Parameters.AddWithValue("@id", id);
 
@@ -84,7 +84,7 @@ namespace Database
                     retorno.Correo = reader.IsDBNull(3) ? "" : reader.GetString(3);
                     retorno.Nombre_Usuario = reader.IsDBNull(4) ? "" : reader.GetString(4);
                     retorno.Contraseña = reader.IsDBNull(5) ? "" : reader.GetString(5);
-                    retorno.TipoUsuarioString = reader.IsDBNull(6) ? "" : reader.GetString(6);
+                    retorno.TipoUsuario = reader.IsDBNull(6) ? "" : reader.GetString(6);
                 }
 
                 reader.Close();
@@ -97,6 +97,41 @@ namespace Database
             catch
             {
                 return null;
+            }
+        }
+
+        public bool UserExists(string nombreUsuario)
+        {
+            try
+            {
+                bool Exists = true;
+
+                _connection.Open();
+
+                SqlCommand command = new SqlCommand("select Nombre_Usuario from Usuarios where Nombre_Usuario = @nombreUsuario", _connection);
+
+                command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.IsDBNull(0))
+                    {
+                        Exists = false;
+                    }
+                }
+
+                reader.Close();
+                reader.Dispose();
+
+                _connection.Close();
+
+                return Exists;
+            }
+            catch
+            {
+                return false;
             }
         }
 
@@ -133,8 +168,10 @@ namespace Database
 
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.Message);
+
                 return false;
             }
         }

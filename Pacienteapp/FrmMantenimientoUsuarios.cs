@@ -87,7 +87,7 @@ namespace Pacienteapp
             return isEdit;
         }
 
-        public int GetId()
+        public int GetSelectedItem()
         {
             return id.Value;
         }
