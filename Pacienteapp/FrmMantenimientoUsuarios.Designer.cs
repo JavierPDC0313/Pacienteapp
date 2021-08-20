@@ -70,11 +70,12 @@ namespace Pacienteapp
             this.DgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvUsuarios.Location = new System.Drawing.Point(3, 119);
             this.DgvUsuarios.Name = "DgvUsuarios";
+            this.DgvUsuarios.ReadOnly = true;
             this.DgvUsuarios.RowTemplate.Height = 25;
             this.DgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvUsuarios.Size = new System.Drawing.Size(590, 261);
             this.DgvUsuarios.TabIndex = 0;
-            this.DgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellContentClick);
+            this.DgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellClick);
             // 
             // BtnEditar
             // 
@@ -126,6 +127,7 @@ namespace Pacienteapp
             this.Name = "FrmMantenimientoUsuarios";
             this.Text = "Usuarios";
             this.Activated += new System.EventHandler(this.FrmMantenimientoUsuarios_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMantenimientoUsuarios_FormClosing);
             this.Load += new System.EventHandler(this.FrmMantenimientoUsuarios_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
