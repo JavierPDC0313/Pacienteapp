@@ -9,13 +9,13 @@ using System.Text;
 using System.Windows.Forms;
 using Pacienteapp.CustomControlItems;
 using BussinessLayer;
-using Database.Models;
+using DatabaseLayer.Models;
 
 namespace Pacienteapp
 {
     public partial class FrmAgregar_EditarUsuario : Form
     {
-        ServicioUsuario _servicio;
+        MantenimientoUsuarios _mantenimiento;
 
         public FrmAgregar_EditarUsuario()
         {
@@ -25,16 +25,17 @@ namespace Pacienteapp
 
             SqlConnection connection = new SqlConnection(connectionString);
 
-            _servicio = new ServicioUsuario(connection);
+            _mantenimiento = new ServicioUsuario(connection);
         }
         #region Events
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (Validations() == false)
             {
+                ComboBoxItem TipoUsuarioSeleccionado = CbxTipoUsuario.SelectedItem as ComboBoxItem;
+
                 if (GetIsEdit() == false)
                 {
-                    ComboBoxItem TipoUsuarioSeleccionado = CbxTipoUsuario.SelectedItem as ComboBoxItem;
 
                     Usuario nuevoUsuario = new Usuario
                     {
@@ -46,7 +47,7 @@ namespace Pacienteapp
                         TipoUsuario = (string)TipoUsuarioSeleccionado.Text
                     };
 
-                    _servicio.Agregar(nuevoUsuario);
+                    _mantenimiento.Agregar(nuevoUsuario);
 
                     MessageBox.Show("Usuario creado con éxito!","Notificación");
 
@@ -54,7 +55,18 @@ namespace Pacienteapp
                 }
                 else
                 {
+                    Usuario editUsuario = new Usuario
+                    {
+                        Id = FrmMantenimientoUsuarios.Instancia.GetSelectedItem(),
+                        Nombre = TxtNombre.Text,
+                        Apellido = TxtApellidoUsuario.Text,
+                        Correo = TxtCorreoUsuario.Text,
+                        Nombre_Usuario = TxtNombreUsuario.Text,
+                        Contraseña = TxtContraseña.Text,
+                        TipoUsuario = (string)TipoUsuarioSeleccionado.Text
+                    };
 
+                    _mantenimiento.Editar(editUsuario);
                 }
             }
         }
@@ -68,7 +80,7 @@ namespace Pacienteapp
 
                 Usuario editUser = new Usuario();
 
-                editUser = _servicio.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
+                editUser = _mantenimiento.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
 
                 TxtNombre.Text = editUser.Nombre;
                 TxtApellidoUsuario.Text = editUser.Apellido;
@@ -126,7 +138,7 @@ namespace Pacienteapp
                 {
                     MessageBox.Show("Debe seleccionar un tipo de usuario", "Advertencia");
                 }
-                else if (_servicio.UserExists(TxtNombreUsuario.Text) == true)
+                else if (_mantenimiento.UserExists(TxtNombreUsuario.Text) == true)
                 {
                     MessageBox.Show("Este usuario ya existe en el sistema, elije otro nombre", "Advertencia");
                 }

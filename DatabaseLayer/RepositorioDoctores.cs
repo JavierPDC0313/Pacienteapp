@@ -3,52 +3,44 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseLayer
 {
-    public class ServicioPacientes
+    public class RepositorioDoctores
     {
         public SqlConnection connection;
 
-        public ServicioPacientes(SqlConnection sqlConnection)
+        public RepositorioDoctores(SqlConnection sqlConnection)
         {
             connection = sqlConnection;
         }
 
         #region Metodos_CRUD
-        public bool Agregar(Pacientes item)
+        public bool Agregar(Doctores item)
         {
-            SqlCommand sqlCommand = new SqlCommand("insert into Pacientes(Nombre, Apellido, Telefono, Direccion, Cedula, FechaNacimiento, Fumador, Alergias, foto) values(@nombre, @apellido, @telefono, @direccion, @cedula, @fechanacimiento, @fumador, @alergias, @foto)", connection);
+            SqlCommand sqlCommand = new SqlCommand("insert into Dotores(Nombre, Apellido, Correo, Telefono, Cedula, Foto) values(@nombre, @apellido, @correo, @telefono, @cedula, @foto)", connection);
 
             sqlCommand.Parameters.AddWithValue("@nombre", item.Nombre);
             sqlCommand.Parameters.AddWithValue("@apellido", item.Apellido);
+            sqlCommand.Parameters.AddWithValue("@correo", item.Correo);
             sqlCommand.Parameters.AddWithValue("@telefono", item.Telefono);
-            sqlCommand.Parameters.AddWithValue("@direccion", item.Direccion);
             sqlCommand.Parameters.AddWithValue("@cedula", item.Cedula);
-            sqlCommand.Parameters.AddWithValue("@fechanacimiento", item.FechaNacimiento);
-            sqlCommand.Parameters.AddWithValue("@fumador", item.Fumador);
-            sqlCommand.Parameters.AddWithValue("@alergias", item.Alergias);
             sqlCommand.Parameters.AddWithValue("@foto", item.Foto);
 
             return EjecutarConsulta(sqlCommand);
         }
 
-        public bool Editar(Pacientes item)
+        public bool Editar(Doctores item)
         {
-            SqlCommand sqlCommand = new SqlCommand("update Pacientes set Nombre = @nombre, Apellido = @apellido, Telefono = @telefono, Direccion = @direccion, Cedula = @cedula, FechaNacimiento = @fechanacimiento, Fumador = @fumador, Alergias = @alergias, foto = @foto where Id = @id", connection);
+            SqlCommand sqlCommand = new SqlCommand("update Dotores set Nombre = @nombre, Apellido = @apellido, Correo = @correo, Telefono = @telefono, Cedula = @cedula, Foto = @foto where Id = @id", connection);
 
             sqlCommand.Parameters.AddWithValue("@id", item.Id);
             sqlCommand.Parameters.AddWithValue("@nombre", item.Nombre);
             sqlCommand.Parameters.AddWithValue("@apellido", item.Apellido);
+            sqlCommand.Parameters.AddWithValue("@correo", item.Correo);
             sqlCommand.Parameters.AddWithValue("@telefono", item.Telefono);
-            sqlCommand.Parameters.AddWithValue("@direccion", item.Direccion);
             sqlCommand.Parameters.AddWithValue("@cedula", item.Cedula);
-            sqlCommand.Parameters.AddWithValue("@fechanacimiento", item.FechaNacimiento);
-            sqlCommand.Parameters.AddWithValue("@fumador", item.Fumador);
-            sqlCommand.Parameters.AddWithValue("@alergias", item.Alergias);
             sqlCommand.Parameters.AddWithValue("@foto", item.Foto);
 
             return EjecutarConsulta(sqlCommand);
@@ -56,18 +48,18 @@ namespace DatabaseLayer
 
         public bool Eliminar(int id)
         {
-            SqlCommand sqlCommand = new SqlCommand("delete Pacientes where Id = @id", connection);
+            SqlCommand sqlCommand = new SqlCommand("delete Dotores where Id = @id", connection);
 
             sqlCommand.Parameters.AddWithValue("@id", id);
 
             return EjecutarConsulta(sqlCommand);
         }
 
-        public Pacientes EnlistarUno(int id)
+        public Doctores EnlistarUno(int id)
         {
-            Pacientes pacientes = new Pacientes();
+            Doctores doctores = new Doctores();
 
-            SqlCommand sqlCommand = new SqlCommand("select * from Pacientes where Id = @id", connection);
+            SqlCommand sqlCommand = new SqlCommand("select * from Doctores where Id = @id", connection);
 
             sqlCommand.Parameters.AddWithValue("@id", id);
 
@@ -79,16 +71,13 @@ namespace DatabaseLayer
 
                 while (dataReader.Read())
                 {
-                    pacientes.Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
-                    pacientes.Nombre = dataReader.IsDBNull(1) ? "NULL" : dataReader.GetString(1);
-                    pacientes.Apellido = dataReader.IsDBNull(2) ? "NULL" : dataReader.GetString(2);
-                    pacientes.Telefono = dataReader.IsDBNull(3) ? "NULL" : dataReader.GetString(3);
-                    pacientes.Direccion = dataReader.IsDBNull(4) ? "NULL" : dataReader.GetString(4);
-                    pacientes.Cedula = dataReader.IsDBNull(5) ? "NULL" : dataReader.GetString(5);
-                    pacientes.FechaNacimiento = dataReader.IsDBNull(6) ? DateTime.Now : dataReader.GetDateTime(6);
-                    pacientes.Fumador = dataReader.IsDBNull(7) ? 0 : dataReader.GetInt32(7);
-                    pacientes.Alergias = dataReader.IsDBNull(8) ? "NULL" : dataReader.GetString(8);
-                    pacientes.Foto = dataReader.IsDBNull(9) ? "NULL" : dataReader.GetString(9);
+                    doctores.Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
+                    doctores.Nombre = dataReader.IsDBNull(1) ? "NULL" : dataReader.GetString(1);
+                    doctores.Apellido = dataReader.IsDBNull(2) ? "NULL" : dataReader.GetString(2);
+                    doctores.Correo = dataReader.IsDBNull(3) ? "NULL" : dataReader.GetString(3);
+                    doctores.Telefono = dataReader.IsDBNull(4) ? "NULL" : dataReader.GetString(4);
+                    doctores.Cedula = dataReader.IsDBNull(5) ? "NULL" : dataReader.GetString(5);
+                    doctores.Foto = dataReader.IsDBNull(6) ? "NULL" : dataReader.GetString(6);
                 }
 
                 dataReader.Close();
@@ -96,7 +85,7 @@ namespace DatabaseLayer
 
                 connection.Close();
 
-                return pacientes;
+                return doctores;
             }
             catch (Exception e)
             {
@@ -106,7 +95,7 @@ namespace DatabaseLayer
 
         public DataTable EnlistarTodo()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Pacientes", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Doctores", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
         #endregion
