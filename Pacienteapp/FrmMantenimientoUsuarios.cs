@@ -19,7 +19,7 @@ namespace Pacienteapp
 
         private bool isEdit;
 
-        private ServicioUsuario _servicio;
+        private MantenimientoUsuarios _mantenimiento;
 
         private FrmAgregar_EditarUsuario Agregar_Editar;
         private FrmMantenimientoUsuarios()
@@ -32,7 +32,7 @@ namespace Pacienteapp
 
             SqlConnection connection = new SqlConnection(connectionString);
 
-            _servicio = new ServicioUsuario(connection);
+            _mantenimiento = new MantenimientoUsuarios(connection);
 
         }
 
@@ -112,7 +112,7 @@ namespace Pacienteapp
 
         private void LoadData()
         {
-            DgvUsuarios.DataSource = _servicio.GetAll();
+            DgvUsuarios.DataSource = _mantenimiento.GetAll();
             DgvUsuarios.ClearSelection();
         }
 

@@ -1,10 +1,9 @@
 ﻿using System;
-using DatabaseLayer;
-using DatabaseLayer.Models;
+using System.Data.SqlClient;
 
 namespace BussinessLayer
 {
-    public class MantenimientoUsuario
+    public class MantenimientoUsuarios
     {
 
         private UsuarioRepositorio repository;
