@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using Pacienteapp.CustomControlItems;
 using BussinessLayer;
 using DatabaseLayer.Models;
+using EmailHandler;
 
 namespace Pacienteapp
 {
     public partial class FrmAgregar_EditarUsuario : Form
     {
         MantenimientoUsuarios _mantenimiento;
+
+        EmailSender _email;
 
         public FrmAgregar_EditarUsuario()
         {
@@ -25,7 +28,9 @@ namespace Pacienteapp
 
             SqlConnection connection = new SqlConnection(connectionString);
 
-            _mantenimiento = new ServicioUsuario(connection);
+            _mantenimiento = new MantenimientoUsuarios(connection);
+
+            _email = new EmailSender();
         }
         #region Events
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -37,7 +42,7 @@ namespace Pacienteapp
                 if (GetIsEdit() == false)
                 {
 
-                    Usuario nuevoUsuario = new Usuario
+                    Usuarios nuevoUsuario = new Usuarios
                     {
                         Nombre = TxtNombre.Text,
                         Apellido = TxtApellidoUsuario.Text,
@@ -51,11 +56,17 @@ namespace Pacienteapp
 
                     MessageBox.Show("Usuario creado con éxito!","Notificación");
 
+                    string to = TxtCorreoUsuario.Text;
+                    string subject = "Cuenta creada";
+                    string body = $"Felicidades {TxtNombre.Text}, tu cuenta fue creada con éxito!";
+
+                    _email.SendEmail(to, subject, body);
+
                     this.Close();
                 }
                 else
                 {
-                    Usuario editUsuario = new Usuario
+                    Usuarios editUsuario = new Usuarios
                     {
                         Id = FrmMantenimientoUsuarios.Instancia.GetSelectedItem(),
                         Nombre = TxtNombre.Text,
@@ -67,6 +78,10 @@ namespace Pacienteapp
                     };
 
                     _mantenimiento.Editar(editUsuario);
+
+                    MessageBox.Show("Usuario editado exitosamente!", "Notificación");
+
+                    this.Close();
                 }
             }
         }
@@ -78,7 +93,7 @@ namespace Pacienteapp
             if (GetIsEdit() == true)
             {
 
-                Usuario editUser = new Usuario();
+                Usuarios editUser = new Usuarios();
 
                 editUser = _mantenimiento.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
 
@@ -88,7 +103,7 @@ namespace Pacienteapp
                 TxtNombreUsuario.Text = editUser.Nombre_Usuario;
                 TxtContraseña.Text = editUser.Contraseña;
                 TxtConfirmarContraseña.Text = editUser.Contraseña;
-                CbxTipoUsuario.SelectedItem = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
+                CbxTipoUsuario.SelectedIndex = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
             }
         }
 
@@ -97,6 +112,11 @@ namespace Pacienteapp
 
             FrmMantenimientoUsuarios.Instancia.Show();
 
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         #endregion

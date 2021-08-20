@@ -26,8 +26,6 @@ namespace Pacienteapp
         {
             InitializeComponent();
 
-            Agregar_Editar = new FrmAgregar_EditarUsuario();
-
             string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -39,16 +37,21 @@ namespace Pacienteapp
         public static FrmMantenimientoUsuarios Instancia { get; set; } = new FrmMantenimientoUsuarios();
 
         #region Events
-        private void DgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void DgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 id = Convert.ToInt32(DgvUsuarios.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                BtnEditar.Visible = true;
+                BtnEliminar.Visible = true;
             }
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            Agregar_Editar = new FrmAgregar_EditarUsuario();
 
             Agregar_Editar.Show();
             this.Hide();
@@ -57,13 +60,17 @@ namespace Pacienteapp
 
         private void FrmMantenimientoUsuarios_Activated(object sender, EventArgs e)
         {
+            LoadData();
+
             isEdit = false;
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            if (id != null)
+            if (id >= 0)
             {
+                Agregar_Editar = new FrmAgregar_EditarUsuario();
+
                 isEdit = true;
                 Agregar_Editar.Show();
                 this.Hide();
@@ -76,12 +83,15 @@ namespace Pacienteapp
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (id != null)
+            if (id >= 0)
             {
                 DialogResult result = MessageBox.Show("Estás seguro de que deseas eliminar este usuario", "Advertencia", MessageBoxButtons.OKCancel);
 
                 if (result == DialogResult.OK)
                 {
+                    _mantenimiento.Eliminar(GetSelectedItem());
+
+                    MessageBox.Show("Usuario eliminado satisfactoriamente!");
 
                 }
             }
@@ -94,6 +104,13 @@ namespace Pacienteapp
         private void FrmMantenimientoUsuarios_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void FrmMantenimientoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+
+            this.Hide();
         }
 
         #endregion
@@ -113,6 +130,7 @@ namespace Pacienteapp
         private void LoadData()
         {
             DgvUsuarios.DataSource = _mantenimiento.GetAll();
+            DgvUsuarios.Columns[0].Visible = false;
             DgvUsuarios.ClearSelection();
         }
 

@@ -19,7 +19,7 @@ namespace DatabaseLayer
         #region Metodos_CRUD
         public bool Agregar(Usuarios item)
         {
-            SqlCommand sqlCommand = new SqlCommand("insert into Usuarios(Nombre, Apellido, Correo, Nombre_Usuarios, Contraseña, TipoUsuario) values(@nombre, @apellido, @correo, @nombre_usuario, @contraseña, @tipousuario)", connection);
+            SqlCommand sqlCommand = new SqlCommand("insert into Usuarios(Nombre, Apellido, Correo, Nombre_Usuario, Contraseña, TipoUsuario) values(@nombre, @apellido, @correo, @nombre_usuario, @contraseña, @tipousuario)", connection);
 
             sqlCommand.Parameters.AddWithValue("@nombre", item.Nombre);
             sqlCommand.Parameters.AddWithValue("@apellido", item.Apellido);
@@ -57,15 +57,15 @@ namespace DatabaseLayer
 
         public Usuarios EnlistarUno(int id)
         {
-            Usuarios usuarios = new Usuarios();
-
-            SqlCommand sqlCommand = new SqlCommand("select * from Usuarios where Id = @id", connection);
-
-            sqlCommand.Parameters.AddWithValue("@id", id);
-
             try
             {
                 connection.Open();
+
+                Usuarios usuarios = new Usuarios();
+
+                SqlCommand sqlCommand = new SqlCommand("select * from Usuarios where Id = @id", connection);
+
+                sqlCommand.Parameters.AddWithValue("@id", id);
 
                 SqlDataReader dataReader = sqlCommand.ExecuteReader();
 
@@ -95,7 +95,7 @@ namespace DatabaseLayer
 
         public DataTable EnlistarTodo()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Doctores", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Usuarios", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
 
@@ -113,10 +113,7 @@ namespace DatabaseLayer
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    Exists = reader.IsDBNull(0) ? false : true;
-                }
+                Exists = reader.IsDBNull(0) ? false : true;
 
                 reader.Close();
                 reader.Dispose();
@@ -127,6 +124,8 @@ namespace DatabaseLayer
             }
             catch (Exception e)
             {
+                connection.Close();
+
                 return false;
             }
         }
@@ -163,6 +162,8 @@ namespace DatabaseLayer
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
+
                 return false;
             }
         }
