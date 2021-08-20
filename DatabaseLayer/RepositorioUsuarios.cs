@@ -3,18 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseLayer
 {
-    public class ServicioUsuarios
+    public class RepositorioUsuarios
     {
-
         public SqlConnection connection;
 
-        public ServicioUsuarios(SqlConnection sqlConnection)
+        public RepositorioUsuarios(SqlConnection sqlConnection)
         {
             connection = sqlConnection;
         }
@@ -109,6 +106,7 @@ namespace DatabaseLayer
                 bool Exists = true;
 
                 connection.Open();
+
                 SqlCommand command = new SqlCommand("select Nombre_Usuario from Usuarios where Nombre_Usuario = @nombreUsuario", connection);
 
                 command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
