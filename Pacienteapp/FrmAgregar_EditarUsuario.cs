@@ -27,7 +27,7 @@ namespace Pacienteapp
 
             _servicio = new ServicioUsuario(connection);
         }
-
+        #region Events
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (Validations() == false)
@@ -49,6 +49,8 @@ namespace Pacienteapp
                     _servicio.Agregar(nuevoUsuario);
 
                     MessageBox.Show("Usuario creado con éxito!","Notificación");
+
+                    this.Close();
                 }
                 else
                 {
@@ -77,6 +79,15 @@ namespace Pacienteapp
                 CbxTipoUsuario.SelectedItem = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
             }
         }
+
+        private void FrmAgregar_EditarUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            FrmMantenimientoUsuarios.Instancia.Show();
+
+        }
+
+        #endregion
 
         #region Methods
         private bool Validations()
@@ -115,7 +126,7 @@ namespace Pacienteapp
                 {
                     MessageBox.Show("Debe seleccionar un tipo de usuario", "Advertencia");
                 }
-                else if (_servicio.UserExists(TxtNombreUsuario.Text) == false)
+                else if (_servicio.UserExists(TxtNombreUsuario.Text) == true)
                 {
                     MessageBox.Show("Este usuario ya existe en el sistema, elije otro nombre", "Advertencia");
                 }
