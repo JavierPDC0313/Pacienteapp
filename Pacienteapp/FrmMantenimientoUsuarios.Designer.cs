@@ -126,6 +126,7 @@ namespace Pacienteapp
             this.Name = "FrmMantenimientoUsuarios";
             this.Text = "Usuarios";
             this.Activated += new System.EventHandler(this.FrmMantenimientoUsuarios_Activated);
+            this.Load += new System.EventHandler(this.FrmMantenimientoUsuarios_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvUsuarios)).EndInit();
