@@ -45,7 +45,6 @@ namespace Pacienteapp
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            txtContraseño.PasswordChar = '*';
             txtContraseño.UseSystemPasswordChar = true;
         }
 
