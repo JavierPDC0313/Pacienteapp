@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using Database;
-using Database.Models;
+using DatabaseLayer;
+using DatabaseLayer.Models;
 
 namespace BussinessLayer
 {
     public class ServicioUsuario
     {
 
-        private UsuarioRepositorio repository;
+        private RepositorioUsuarios repository;
 
         public ServicioUsuario (SqlConnection connection)
         {
-            repository = new UsuarioRepositorio(connection);
+            repository = new RepositorioUsuarios(connection);
         }
 
-        public bool Agregar(Usuario item)
+        public bool Agregar(Usuarios item)
         {
             return repository.Agregar(item);
         }
 
-        public bool Editar(Usuario item)
+        public bool Editar(Usuarios item)
         {
             return repository.Editar(item);
         }
@@ -33,12 +33,12 @@ namespace BussinessLayer
 
         public DataTable GetAll()
         {
-            return repository.GetAll();
+            return repository.EnlistarTodo();
         }
 
-        public Usuario GetById(int id)
+        public Usuarios GetById(int id)
         {
-            return repository.GetById(id);
+            return repository.EnlistarUno(id);
         }
 
         public bool UserExists(string nombreUsuario)

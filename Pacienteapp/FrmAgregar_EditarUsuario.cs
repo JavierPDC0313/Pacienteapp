@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Pacienteapp.CustomControlItems;
 using BussinessLayer;
-using Database.Models;
+using DatabaseLayer.Models;
 
 namespace Pacienteapp
 {
@@ -36,7 +36,7 @@ namespace Pacienteapp
                 {
                     ComboBoxItem TipoUsuarioSeleccionado = CbxTipoUsuario.SelectedItem as ComboBoxItem;
 
-                    Usuario nuevoUsuario = new Usuario
+                    Usuarios nuevoUsuario = new Usuarios
                     {
                         Nombre = TxtNombre.Text,
                         Apellido = TxtApellidoUsuario.Text,
@@ -66,7 +66,7 @@ namespace Pacienteapp
             if (GetIsEdit() == true)
             {
 
-                Usuario editUser = new Usuario();
+                Usuarios editUser = new Usuarios();
 
                 editUser = _servicio.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
 
