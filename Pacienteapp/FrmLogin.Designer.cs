@@ -58,7 +58,7 @@ namespace Pacienteapp
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.01713F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.98287F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 491);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 525);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnIngresar
@@ -68,12 +68,13 @@ namespace Pacienteapp
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnIngresar.ForeColor = System.Drawing.Color.White;
-            this.btnIngresar.Location = new System.Drawing.Point(116, 370);
+            this.btnIngresar.Location = new System.Drawing.Point(118, 395);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(128, 49);
             this.btnIngresar.TabIndex = 1;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -87,7 +88,7 @@ namespace Pacienteapp
             this.tableLayoutPanel2.Controls.Add(this.txtUsuario, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtContraseño, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.cBoxVerContraseña, 1, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(35, 91);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(38, 103);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(12);
             this.tableLayoutPanel2.RowCount = 3;
@@ -162,12 +163,13 @@ namespace Pacienteapp
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(360, 491);
+            this.ClientSize = new System.Drawing.Size(365, 525);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
             this.Text = "Iniciar sesion";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
+            this.VisibleChanged += new System.EventHandler(this.FrmLogin_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
