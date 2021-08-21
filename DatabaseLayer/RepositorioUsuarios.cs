@@ -141,11 +141,11 @@ namespace DatabaseLayer
         {
             try
             {
-                bool Exists = true;
+                int Exists = 0;
 
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("if exist (select Nombre_Usuario from Usuarios where Nombre_Usuario = @nombreUsuario)", connection);
+                SqlCommand command = new SqlCommand("select count(Nombre_Usuario) from Usuarios where Nombre_Usuario = @nombreUsuario", connection);
 
                 command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
 
@@ -153,7 +153,7 @@ namespace DatabaseLayer
 
                 while (reader.Read())
                 {
-                    Exists = reader.IsDBNull(0) ? false : true;
+                    Exists = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 }
 
                 reader.Close();
@@ -161,7 +161,15 @@ namespace DatabaseLayer
 
                 connection.Close();
 
-                return Exists;
+                if (Exists >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             catch (Exception e)
             {
