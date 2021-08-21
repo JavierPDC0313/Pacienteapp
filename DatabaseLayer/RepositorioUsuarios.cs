@@ -145,7 +145,7 @@ namespace DatabaseLayer
 
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("select Nombre_Usuario from Usuarios where Nombre_Usuario = @nombreUsuario", connection);
+                SqlCommand command = new SqlCommand("if exist (select Nombre_Usuario from Usuarios where Nombre_Usuario = @nombreUsuario)", connection);
 
                 command.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
 
