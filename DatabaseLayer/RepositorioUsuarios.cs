@@ -151,7 +151,10 @@ namespace DatabaseLayer
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                Exists = reader.IsDBNull(0) ? false : true;
+                while (reader.Read())
+                {
+                    Exists = reader.IsDBNull(0) ? false : true;
+                }
 
                 reader.Close();
                 reader.Dispose();
