@@ -93,6 +93,44 @@ namespace DatabaseLayer
             }
         }
 
+        public Usuarios EnlistarPorUsuario(string nombreUsuario)
+        {
+            try
+            {
+                connection.Open();
+
+                Usuarios usuarios = new Usuarios();
+
+                SqlCommand sqlCommand = new SqlCommand("select * from Usuarios where Nombre_Usuario = @nombre_usuario", connection);
+
+                sqlCommand.Parameters.AddWithValue("@nombre_usuario", nombreUsuario);
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    usuarios.Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
+                    usuarios.Nombre = dataReader.IsDBNull(1) ? "NULL" : dataReader.GetString(1);
+                    usuarios.Apellido = dataReader.IsDBNull(2) ? "NULL" : dataReader.GetString(2);
+                    usuarios.Correo = dataReader.IsDBNull(3) ? "NULL" : dataReader.GetString(3);
+                    usuarios.Nombre_Usuario = dataReader.IsDBNull(4) ? "NULL" : dataReader.GetString(4);
+                    usuarios.Contraseña = dataReader.IsDBNull(5) ? "NULL" : dataReader.GetString(5);
+                    usuarios.TipoUsuario = dataReader.IsDBNull(6) ? "NULL" : dataReader.GetString(6);
+                }
+
+                dataReader.Close();
+                dataReader.Dispose();
+
+                connection.Close();
+
+                return usuarios;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         public DataTable EnlistarTodo()
         {
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Usuarios", connection);
