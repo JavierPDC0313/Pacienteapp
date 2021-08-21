@@ -43,6 +43,5 @@ namespace BussinessLayer
             return repository.EnlistarTodo();
         }
 
-
-        }
     }
+}
