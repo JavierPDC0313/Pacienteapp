@@ -10,10 +10,7 @@ using System.Windows.Forms;
 using Pacienteapp.CustomControlItems;
 using BussinessLayer;
 using DatabaseLayer.Models;
-<<<<<<< HEAD
-=======
 using EmailHandler;
->>>>>>> 232ee77023120b122dafe057a7d39254f829bfcd
 
 namespace Pacienteapp
 {
