@@ -10,12 +10,18 @@ using System.Windows.Forms;
 using Pacienteapp.CustomControlItems;
 using BussinessLayer;
 using DatabaseLayer.Models;
+<<<<<<< HEAD
+=======
+using EmailHandler;
+>>>>>>> 232ee77023120b122dafe057a7d39254f829bfcd
 
 namespace Pacienteapp
 {
     public partial class FrmAgregar_EditarUsuario : Form
     {
-        ServicioUsuario _servicio;
+        MantenimientoUsuarios _mantenimiento;
+
+        EmailSender _email;
 
         public FrmAgregar_EditarUsuario()
         {
@@ -25,16 +31,19 @@ namespace Pacienteapp
 
             SqlConnection connection = new SqlConnection(connectionString);
 
-            _servicio = new ServicioUsuario(connection);
+            _mantenimiento = new MantenimientoUsuarios(connection);
+
+            _email = new EmailSender();
         }
         #region Events
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (Validations() == false)
             {
+                ComboBoxItem TipoUsuarioSeleccionado = CbxTipoUsuario.SelectedItem as ComboBoxItem;
+
                 if (GetIsEdit() == false)
                 {
-                    ComboBoxItem TipoUsuarioSeleccionado = CbxTipoUsuario.SelectedItem as ComboBoxItem;
 
                     Usuarios nuevoUsuario = new Usuarios
                     {
@@ -46,15 +55,36 @@ namespace Pacienteapp
                         TipoUsuario = (string)TipoUsuarioSeleccionado.Text
                     };
 
-                    _servicio.Agregar(nuevoUsuario);
+                    _mantenimiento.Agregar(nuevoUsuario);
 
                     MessageBox.Show("Usuario creado con éxito!","Notificación");
+
+                    string to = TxtCorreoUsuario.Text;
+                    string subject = "Cuenta creada";
+                    string body = $"Felicidades {TxtNombre.Text}, tu cuenta fue creada con éxito!";
+
+                    _email.SendEmail(to, subject, body);
 
                     this.Close();
                 }
                 else
                 {
+                    Usuarios editUsuario = new Usuarios
+                    {
+                        Id = FrmMantenimientoUsuarios.Instancia.GetSelectedItem(),
+                        Nombre = TxtNombre.Text,
+                        Apellido = TxtApellidoUsuario.Text,
+                        Correo = TxtCorreoUsuario.Text,
+                        Nombre_Usuario = TxtNombreUsuario.Text,
+                        Contraseña = TxtContraseña.Text,
+                        TipoUsuario = (string)TipoUsuarioSeleccionado.Text
+                    };
 
+                    _mantenimiento.Editar(editUsuario);
+
+                    MessageBox.Show("Usuario editado exitosamente!", "Notificación");
+
+                    this.Close();
                 }
             }
         }
@@ -68,7 +98,7 @@ namespace Pacienteapp
 
                 Usuarios editUser = new Usuarios();
 
-                editUser = _servicio.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
+                editUser = _mantenimiento.GetById(FrmMantenimientoUsuarios.Instancia.GetSelectedItem());
 
                 TxtNombre.Text = editUser.Nombre;
                 TxtApellidoUsuario.Text = editUser.Apellido;
@@ -76,7 +106,7 @@ namespace Pacienteapp
                 TxtNombreUsuario.Text = editUser.Nombre_Usuario;
                 TxtContraseña.Text = editUser.Contraseña;
                 TxtConfirmarContraseña.Text = editUser.Contraseña;
-                CbxTipoUsuario.SelectedItem = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
+                CbxTipoUsuario.SelectedIndex = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
             }
         }
 
@@ -85,6 +115,11 @@ namespace Pacienteapp
 
             FrmMantenimientoUsuarios.Instancia.Show();
 
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         #endregion
@@ -126,7 +161,7 @@ namespace Pacienteapp
                 {
                     MessageBox.Show("Debe seleccionar un tipo de usuario", "Advertencia");
                 }
-                else if (_servicio.UserExists(TxtNombreUsuario.Text) == true)
+                else if (_mantenimiento.UserExists(TxtNombreUsuario.Text) == true)
                 {
                     MessageBox.Show("Este usuario ya existe en el sistema, elije otro nombre", "Advertencia");
                 }
