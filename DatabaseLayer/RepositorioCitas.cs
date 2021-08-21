@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 
 namespace DatabaseLayer
 {
-    public class ServicioCitas
+    public class RepositorioCitas
     {
         public SqlConnection connection;
 
-        public ServicioCitas(SqlConnection sqlConnection)
+        public RepositorioCitas(SqlConnection sqlConnection)
         {
             connection = sqlConnection;
         }

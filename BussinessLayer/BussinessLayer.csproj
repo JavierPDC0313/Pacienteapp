@@ -1,11 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\OneDrive - República Digital Educación\Programación I\Javier's github repository\DatabaseLayer\DatabaseLayer\DatabaseLayer.csproj" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj" />
   </ItemGroup>
 
 </Project>

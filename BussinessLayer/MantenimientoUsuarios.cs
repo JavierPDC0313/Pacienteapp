@@ -6,12 +6,12 @@ using DatabaseLayer.Models;
 
 namespace BussinessLayer
 {
-    public class ServicioUsuario
+    public class MantenimientoUsuarios
     {
 
         private RepositorioUsuarios repository;
 
-        public ServicioUsuario (SqlConnection connection)
+        public MantenimientoUsuarios(SqlConnection connection)
         {
             repository = new RepositorioUsuarios(connection);
         }
@@ -45,5 +45,6 @@ namespace BussinessLayer
         {
             return repository.UserExists(nombreUsuario);
         }
+
     }
 }

@@ -3,17 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseLayer
 {
-    public class ServicioResultadosLaboratorio
+    public class RepositorioResultadosLaboratorio
     {
         public SqlConnection connection;
 
-        public ServicioResultadosLaboratorio(SqlConnection sqlConnection)
+        public RepositorioResultadosLaboratorio(SqlConnection sqlConnection)
         {
             connection = sqlConnection;
         }
