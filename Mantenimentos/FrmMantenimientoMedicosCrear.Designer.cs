@@ -52,9 +52,9 @@ namespace Mantenimentos
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(155, 20);
+            this.TxtBuscar.Location = new System.Drawing.Point(182, 20);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(335, 23);
+            this.TxtBuscar.Size = new System.Drawing.Size(308, 23);
             this.TxtBuscar.TabIndex = 1;
             this.TtMensajes.SetToolTip(this.TxtBuscar, "Busque un Medico.");
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
@@ -64,10 +64,10 @@ namespace Mantenimentos
             this.DataListado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.DataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataListado.Location = new System.Drawing.Point(12, 76);
+            this.DataListado.Location = new System.Drawing.Point(39, 73);
             this.DataListado.Name = "DataListado";
             this.DataListado.RowTemplate.Height = 25;
-            this.DataListado.Size = new System.Drawing.Size(511, 293);
+            this.DataListado.Size = new System.Drawing.Size(484, 296);
             this.DataListado.TabIndex = 2;
             // 
             // BtnAgregar
@@ -76,9 +76,9 @@ namespace Mantenimentos
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.BtnAgregar.ForeColor = System.Drawing.Color.Blue;
-            this.BtnAgregar.Location = new System.Drawing.Point(603, 101);
+            this.BtnAgregar.Location = new System.Drawing.Point(630, 98);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(100, 35);
+            this.BtnAgregar.Size = new System.Drawing.Size(73, 38);
             this.BtnAgregar.TabIndex = 4;
             this.BtnAgregar.Text = "Agregar Nuevo Medico";
             this.BtnAgregar.UseVisualStyleBackColor = true;
@@ -89,9 +89,9 @@ namespace Mantenimentos
             this.BtnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnEditar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.BtnEditar.Location = new System.Drawing.Point(603, 167);
+            this.BtnEditar.Location = new System.Drawing.Point(630, 164);
             this.BtnEditar.Name = "BtnEditar";
-            this.BtnEditar.Size = new System.Drawing.Size(100, 35);
+            this.BtnEditar.Size = new System.Drawing.Size(73, 38);
             this.BtnEditar.TabIndex = 5;
             this.BtnEditar.Text = "Editar";
             this.BtnEditar.UseVisualStyleBackColor = true;
@@ -103,9 +103,9 @@ namespace Mantenimentos
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnEliminar.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.BtnEliminar.ForeColor = System.Drawing.Color.Red;
-            this.BtnEliminar.Location = new System.Drawing.Point(603, 238);
+            this.BtnEliminar.Location = new System.Drawing.Point(630, 235);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(100, 35);
+            this.BtnEliminar.Size = new System.Drawing.Size(73, 38);
             this.BtnEliminar.TabIndex = 6;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
