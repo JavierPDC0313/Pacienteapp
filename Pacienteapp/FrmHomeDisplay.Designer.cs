@@ -64,9 +64,9 @@ namespace Pacienteapp
             this.btnMatenimiento_Usuario_Paciente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMatenimiento_Usuario_Paciente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMatenimiento_Usuario_Paciente.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMatenimiento_Usuario_Paciente.Location = new System.Drawing.Point(95, 38);
+            this.btnMatenimiento_Usuario_Paciente.Location = new System.Drawing.Point(30, 38);
             this.btnMatenimiento_Usuario_Paciente.Name = "btnMatenimiento_Usuario_Paciente";
-            this.btnMatenimiento_Usuario_Paciente.Size = new System.Drawing.Size(234, 42);
+            this.btnMatenimiento_Usuario_Paciente.Size = new System.Drawing.Size(365, 42);
             this.btnMatenimiento_Usuario_Paciente.TabIndex = 0;
             this.btnMatenimiento_Usuario_Paciente.Text = "button";
             this.btnMatenimiento_Usuario_Paciente.UseVisualStyleBackColor = false;
@@ -78,9 +78,9 @@ namespace Pacienteapp
             this.btnMatenimiento_Medico_Citas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMatenimiento_Medico_Citas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMatenimiento_Medico_Citas.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMatenimiento_Medico_Citas.Location = new System.Drawing.Point(95, 156);
+            this.btnMatenimiento_Medico_Citas.Location = new System.Drawing.Point(30, 156);
             this.btnMatenimiento_Medico_Citas.Name = "btnMatenimiento_Medico_Citas";
-            this.btnMatenimiento_Medico_Citas.Size = new System.Drawing.Size(234, 42);
+            this.btnMatenimiento_Medico_Citas.Size = new System.Drawing.Size(365, 42);
             this.btnMatenimiento_Medico_Citas.TabIndex = 0;
             this.btnMatenimiento_Medico_Citas.Text = "button";
             this.btnMatenimiento_Medico_Citas.UseVisualStyleBackColor = false;
@@ -92,9 +92,9 @@ namespace Pacienteapp
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Location = new System.Drawing.Point(95, 274);
+            this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Location = new System.Drawing.Point(30, 274);
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Name = "btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio";
-            this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Size = new System.Drawing.Size(234, 42);
+            this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Size = new System.Drawing.Size(365, 42);
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.TabIndex = 0;
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "button";
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.UseVisualStyleBackColor = false;
@@ -110,6 +110,7 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmHomeDisplay";
             this.Text = "Home\'s display";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHomeDisplay_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHomeDisplay_FormClosed);
             this.Load += new System.EventHandler(this.FrmHomeDisplay_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

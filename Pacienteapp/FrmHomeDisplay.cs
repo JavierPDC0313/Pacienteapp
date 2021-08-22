@@ -34,6 +34,11 @@ namespace Pacienteapp
             this.Close();
         }
 
+        private void FrmHomeDisplay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
         #endregion
 
         #region Methods
