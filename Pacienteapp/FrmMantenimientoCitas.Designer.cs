@@ -69,6 +69,7 @@ namespace Pacienteapp
             this.BtnAgregar.TabIndex = 0;
             this.BtnAgregar.Text = "Agregar Cita";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click_1);
             // 
             // DgvCitas
             // 
@@ -93,6 +94,7 @@ namespace Pacienteapp
             this.BtnEditar.Text = "Editar";
             this.BtnEditar.UseVisualStyleBackColor = true;
             this.BtnEditar.Visible = false;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // BtnEliminar
             // 

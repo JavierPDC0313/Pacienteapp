@@ -34,5 +34,20 @@ namespace Pacienteapp
         {
 
         }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAgregar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
