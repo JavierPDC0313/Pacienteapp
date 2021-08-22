@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\A19A52882\\source\\repos\\Mantenimentos\\Mantenimentos\\Mantenimentos.csproj": {}
+    "C:\\Users\\jorge\\Documents\\GitHub\\Pacienteapp - copia (2)\\Mantenimentos\\Mantenimentos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\A19A52882\\source\\repos\\Mantenimentos\\Mantenimentos\\Mantenimentos.csproj": {
+    "C:\\Users\\jorge\\Documents\\GitHub\\Pacienteapp - copia (2)\\Mantenimentos\\Mantenimentos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\A19A52882\\source\\repos\\Mantenimentos\\Mantenimentos\\Mantenimentos.csproj",
+        "projectUniqueName": "C:\\Users\\jorge\\Documents\\GitHub\\Pacienteapp - copia (2)\\Mantenimentos\\Mantenimentos.csproj",
         "projectName": "Mantenimentos",
-        "projectPath": "C:\\Users\\A19A52882\\source\\repos\\Mantenimentos\\Mantenimentos\\Mantenimentos.csproj",
-        "packagesPath": "C:\\Users\\A19A52882\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\A19A52882\\source\\repos\\Mantenimentos\\Mantenimentos\\obj\\",
+        "projectPath": "C:\\Users\\jorge\\Documents\\GitHub\\Pacienteapp - copia (2)\\Mantenimentos\\Mantenimentos.csproj",
+        "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jorge\\Documents\\GitHub\\Pacienteapp - copia (2)\\Mantenimentos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\A19A52882\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
