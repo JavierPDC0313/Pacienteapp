@@ -50,9 +50,26 @@ namespace Pacienteapp
             else if (FrmMantenimientoCitas.Instancia.GetIsPacienteSelected() == true)
             {
                 isPacienteSelected = true;
+
+                LblSelecciona.Text = "Selecciona un medico:";
+
+                BtnBuscar.Visible = true;
+
+                TxtBuscarCedula.Visible = true;
             }
 
             LoadData();
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in DgvListado.Rows)
+            {
+                if (row.Cells[5].Value.ToString().Equals(TxtBuscarCedula.Text))
+                {
+                    DgvListado.Rows[row.Index].Selected = true;
+                }
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -93,21 +110,19 @@ namespace Pacienteapp
             {
                 DgvListado.DataSource = _mantenimientoPacientes.GetAll();
                 DgvListado.Columns[0].Visible = false;
+                DgvListado.Columns[7].Visible = false;
+                DgvListado.Columns[8].Visible = false;
+                DgvListado.Columns[9].Visible = false;
                 DgvListado.ClearSelection();
             }
             else if(FrmMantenimientoCitas.Instancia.GetIsPacienteSelected() == true)
             {
                 DgvListado.DataSource = _mantenimientoMedicos.GetAll();
                 DgvListado.Columns[0].Visible = false;
+                DgvListado.Columns[6].Visible = false;
                 DgvListado.ClearSelection();
             }
         }
-
-        public int result()
-        {
-            return id;
-        }
-
         #endregion
     }
 }

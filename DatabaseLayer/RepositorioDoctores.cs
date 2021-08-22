@@ -98,6 +98,48 @@ namespace DatabaseLayer
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Doctores", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
+
+        public DataTable EnlistarUnoPorCedula(string cedula)
+        {
+            Doctores doctores = new Doctores();
+
+            DataTable Result = new DataTable();
+
+            SqlCommand sqlCommand = new SqlCommand("select * from Doctores where Id = @id", connection);
+
+            sqlCommand.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    doctores.Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
+                    doctores.Nombre = dataReader.IsDBNull(1) ? "NULL" : dataReader.GetString(1);
+                    doctores.Apellido = dataReader.IsDBNull(2) ? "NULL" : dataReader.GetString(2);
+                    doctores.Correo = dataReader.IsDBNull(3) ? "NULL" : dataReader.GetString(3);
+                    doctores.Telefono = dataReader.IsDBNull(4) ? "NULL" : dataReader.GetString(4);
+                    doctores.Cedula = dataReader.IsDBNull(5) ? "NULL" : dataReader.GetString(5);
+                    doctores.Foto = dataReader.IsDBNull(6) ? "NULL" : dataReader.GetString(6);
+                }
+
+                dataReader.Close();
+                dataReader.Dispose();
+
+                connection.Close();
+
+                Result.
+
+                return doctores;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region Ejecutores_SQL
