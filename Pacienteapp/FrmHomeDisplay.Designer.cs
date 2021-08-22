@@ -116,6 +116,7 @@ namespace Pacienteapp
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHomeDisplay_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHomeDisplay_FormClosed);
             this.Load += new System.EventHandler(this.FrmHomeDisplay_Load);
+            this.VisibleChanged += new System.EventHandler(this.FrmHomeDisplay_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

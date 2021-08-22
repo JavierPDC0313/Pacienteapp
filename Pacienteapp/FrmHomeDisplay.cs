@@ -38,6 +38,11 @@ namespace Pacienteapp
             e.Cancel = true;
         }
 
+        private void FrmHomeDisplay_VisibleChanged(object sender, EventArgs e)
+        {
+            LoadForm();
+        }
+
         private void btnMatenimiento_Usuario_Paciente_Click(object sender, EventArgs e)
         {
             SwitchbtnMatenimiento_Usuario_Paciente();

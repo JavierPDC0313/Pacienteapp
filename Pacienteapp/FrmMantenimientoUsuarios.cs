@@ -115,8 +115,6 @@ namespace Pacienteapp
         private void FrmMantenimientoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-
-            this.Hide();
         }
 
         #endregion
@@ -141,5 +139,13 @@ namespace Pacienteapp
         }
 
         #endregion
+
+        private void FrmMantenimientoUsuarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmHomeDisplay homeDisplay = FrmHomeDisplay.HomeDisplay;
+            homeDisplay.Show();
+
+            this.Hide();
+        }
     }
 }
