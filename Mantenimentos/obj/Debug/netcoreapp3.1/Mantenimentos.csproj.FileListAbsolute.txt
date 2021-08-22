@@ -1,8 +1,0 @@
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.csproj.AssemblyReference.cache
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.FrmMantenimientoMedicosCrear.resources
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.FrmMantenimiento_de_Pruebas_de_Laboratorio.resources
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.FrmMedicos.resources
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.csproj.GenerateResource.cache
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.AssemblyInfoInputs.cache
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.AssemblyInfo.cs
-C:\Users\A19A52882\Documents\GitHub\Pacienteapp\Mantenimentos\obj\Debug\netcoreapp3.1\Mantenimentos.csproj.CoreCompileInputs.cache
