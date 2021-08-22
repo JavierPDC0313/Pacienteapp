@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="FrmAgregar_EditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmHomeDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMantenimientoCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMantenimientoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
