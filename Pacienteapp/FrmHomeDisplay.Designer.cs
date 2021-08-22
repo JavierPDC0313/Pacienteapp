@@ -70,6 +70,7 @@ namespace Pacienteapp
             this.btnMatenimiento_Usuario_Paciente.TabIndex = 0;
             this.btnMatenimiento_Usuario_Paciente.Text = "button";
             this.btnMatenimiento_Usuario_Paciente.UseVisualStyleBackColor = false;
+            this.btnMatenimiento_Usuario_Paciente.Click += new System.EventHandler(this.btnMatenimiento_Usuario_Paciente_Click);
             // 
             // btnMatenimiento_Medico_Citas
             // 
@@ -84,6 +85,7 @@ namespace Pacienteapp
             this.btnMatenimiento_Medico_Citas.TabIndex = 0;
             this.btnMatenimiento_Medico_Citas.Text = "button";
             this.btnMatenimiento_Medico_Citas.UseVisualStyleBackColor = false;
+            this.btnMatenimiento_Medico_Citas.Click += new System.EventHandler(this.btnMatenimiento_Medico_Citas_Click);
             // 
             // btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio
             // 
@@ -98,6 +100,7 @@ namespace Pacienteapp
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.TabIndex = 0;
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "button";
             this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.UseVisualStyleBackColor = false;
+            this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Click += new System.EventHandler(this.btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio_Click);
             // 
             // FrmHomeDisplay
             // 

@@ -38,6 +38,21 @@ namespace Pacienteapp
             e.Cancel = true;
         }
 
+        private void btnMatenimiento_Usuario_Paciente_Click(object sender, EventArgs e)
+        {
+            SwitchbtnMatenimiento_Usuario_Paciente();
+        }
+
+        private void btnMatenimiento_Medico_Citas_Click(object sender, EventArgs e)
+        {
+            SwitchbtnMatenimiento_Medico_Citas();
+        }
+
+        private void btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio_Click(object sender, EventArgs e)
+        {
+            SwitchbtnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio();
+        }
+
         #endregion
 
         #region Methods
@@ -57,23 +72,9 @@ namespace Pacienteapp
             }
         }
 
-        private void SwitchButton()
+        private void SwitchbtnMatenimiento_Usuario_Paciente()
         {
             if (btnMatenimiento_Usuario_Paciente.Text == "Mantenimiento usuarios")
-            {
-                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
-                mantenimientoUsuarios.Show();
-
-                this.Hide();
-            }
-            else if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento médicos")
-            {
-                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
-                mantenimientoUsuarios.Show();
-
-                this.Hide();
-            }
-            else if (btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text == "Mantenimiento pruebas laboratorio")
             {
                 FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
                 mantenimientoUsuarios.Show();
@@ -87,10 +88,30 @@ namespace Pacienteapp
 
                 this.Hide();
             }
+        }
+        private void SwitchbtnMatenimiento_Medico_Citas()
+        {
+            if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento médicos")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
+
+                this.Hide();
+            }
             else if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento citas")
             {
                 FrmMantenimientoCitas mantenimientoCitas = FrmMantenimientoCitas.Instancia;
                 mantenimientoCitas.Show();
+
+                this.Hide();
+            }
+        }
+        private void SwitchbtnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio()
+        {
+            if (btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text == "Mantenimiento pruebas laboratorio")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
 
                 this.Hide();
             }
