@@ -67,12 +67,19 @@ namespace Pacienteapp
             // 
             // DgvListado
             // 
+            this.DgvListado.AllowUserToAddRows = false;
+            this.DgvListado.AllowUserToDeleteRows = false;
+            this.DgvListado.AllowUserToOrderColumns = true;
+            this.DgvListado.AllowUserToResizeColumns = false;
+            this.DgvListado.AllowUserToResizeRows = false;
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.DgvListado, 2);
             this.DgvListado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvListado.Location = new System.Drawing.Point(3, 107);
             this.DgvListado.Name = "DgvListado";
+            this.DgvListado.ReadOnly = true;
             this.DgvListado.RowTemplate.Height = 25;
+            this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(794, 234);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellClick);
@@ -166,6 +173,7 @@ namespace Pacienteapp
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Visible = false;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // BtnLimpiar
             // 

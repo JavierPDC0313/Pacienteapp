@@ -22,8 +22,6 @@ namespace Pacienteapp
 
         private bool isPacienteSelected;
 
-        private bool isMedicoSeleceted;
-
         private int id;
 
         public ListadoPaciente_Medico()
@@ -43,9 +41,18 @@ namespace Pacienteapp
 
         private void ListadoPacientes_Load(object sender, EventArgs e)
         {
+
             if (FrmMantenimientoCitas.Instancia.GetIsAdding() == true)
             {
                 isAdding = true;
+
+                LoadData();
+                DgvListado.ClearSelection();
+
+                if (FrmMantenimientoCitas.Instancia.GetIsEdit() == true)
+                {
+                    SearchDgv(Convert.ToString(FrmMantenimientoCitas.Instancia.Paciente_id), 0);
+                }
             }
             else if (FrmMantenimientoCitas.Instancia.GetIsPacienteSelected() == true)
             {
@@ -58,24 +65,29 @@ namespace Pacienteapp
                 BtnLimpiar.Visible = true;
 
                 TxtBuscarCedula.Visible = true;
+
+                LoadData();
+                DgvListado.ClearSelection();
+
+                if (FrmMantenimientoCitas.Instancia.GetIsEdit() == true)
+                {
+                    SearchDgv(Convert.ToString(FrmMantenimientoCitas.Instancia.Medico_id), 0);
+                }
             }
 
-            LoadData();
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in DgvListado.Rows)
-            {
-                if (row.Cells[5].Value.ToString().Equals(TxtBuscarCedula.Text))
-                {
-                    DgvListado.Rows[row.Index].Selected = true;
-                }
-            }
+            SearchDgv(TxtBuscarCedula.Text, 5);
+
+            BtnSiguiente.Visible = true;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            FrmMantenimientoCitas.Instancia.isCancel = true;
+
             this.Close();
         }
 
@@ -94,6 +106,8 @@ namespace Pacienteapp
 
                 isAdding = false;
                 isPacienteSelected = false;
+
+                this.Close();
             }
             else if (isPacienteSelected == true)
             {
@@ -101,12 +115,16 @@ namespace Pacienteapp
 
                 isAdding = false;
                 isPacienteSelected = false;
+
+                this.Close();
             }
         }
 
         private void DgvListado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             id = Convert.ToInt32(DgvListado.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            BtnSiguiente.Visible = true;
         }
 
         #endregion
@@ -122,14 +140,23 @@ namespace Pacienteapp
                 DgvListado.Columns[7].Visible = false;
                 DgvListado.Columns[8].Visible = false;
                 DgvListado.Columns[9].Visible = false;
-                DgvListado.ClearSelection();
             }
             else if(FrmMantenimientoCitas.Instancia.GetIsPacienteSelected() == true)
             {
                 DgvListado.DataSource = _mantenimientoMedicos.GetAll();
                 DgvListado.Columns[0].Visible = false;
                 DgvListado.Columns[6].Visible = false;
-                DgvListado.ClearSelection();
+            }
+        }
+
+        private void SearchDgv(string parameter, int cell)
+        {
+            foreach (DataGridViewRow row in DgvListado.Rows)
+            {
+                if (row.Cells[cell].Value.ToString().Equals(parameter))
+                {
+                    DgvListado.Rows[row.Index].Selected = true;
+                }
             }
         }
         #endregion

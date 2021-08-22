@@ -73,12 +73,19 @@ namespace Pacienteapp
             // 
             // DgvCitas
             // 
+            this.DgvCitas.AllowUserToAddRows = false;
+            this.DgvCitas.AllowUserToDeleteRows = false;
+            this.DgvCitas.AllowUserToOrderColumns = true;
+            this.DgvCitas.AllowUserToResizeColumns = false;
+            this.DgvCitas.AllowUserToResizeRows = false;
             this.DgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.DgvCitas, 3);
             this.DgvCitas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvCitas.Location = new System.Drawing.Point(3, 120);
             this.DgvCitas.Name = "DgvCitas";
+            this.DgvCitas.ReadOnly = true;
             this.DgvCitas.RowTemplate.Height = 25;
+            this.DgvCitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvCitas.Size = new System.Drawing.Size(733, 261);
             this.DgvCitas.TabIndex = 1;
             this.DgvCitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCitas_CellClick);
@@ -108,6 +115,7 @@ namespace Pacienteapp
             this.BtnEliminar.TabIndex = 3;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Visible = false;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // FrmMantenimientoCitas

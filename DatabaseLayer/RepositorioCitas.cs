@@ -23,21 +23,19 @@ namespace DatabaseLayer
             sqlCommand.Parameters.AddWithValue("@iddoctor", item.IdDoctor);
             sqlCommand.Parameters.AddWithValue("@fecha_hora_cita", item.FechaHora);
             sqlCommand.Parameters.AddWithValue("@causa_cita", item.Causa);
-            sqlCommand.Parameters.AddWithValue("@estado_cita", item.Estado);
 
             return EjecutarConsulta(sqlCommand);
         }
 
         public bool Editar(Citas item)
         {
-            SqlCommand sqlCommand = new SqlCommand("update Citas set IdPaciente = @idpaciente, IdDoctor = @iddoctor, Fecha_Hora_cita =  @fecha_hora_cita, Causa_cita = @causa_cita, Estado_cita = @estado_cita where Id = @id", connection);
+            SqlCommand sqlCommand = new SqlCommand("update Citas set IdPaciente = @idpaciente, IdDoctor = @iddoctor, Fecha_Hora_cita =  @fecha_hora_cita, Causa_cita = @causa_cita where Id = @id", connection);
 
             sqlCommand.Parameters.AddWithValue("@id", item.Id);
             sqlCommand.Parameters.AddWithValue("@idpaciente", item.IdPaciente);
             sqlCommand.Parameters.AddWithValue("@iddoctor", item.IdDoctor);
             sqlCommand.Parameters.AddWithValue("@fecha_hora_cita", item.FechaHora);
             sqlCommand.Parameters.AddWithValue("@causa_cita", item.Causa);
-            sqlCommand.Parameters.AddWithValue("@estado_cita", item.Estado);
 
             return EjecutarConsulta(sqlCommand);
         }
@@ -90,7 +88,7 @@ namespace DatabaseLayer
 
         public DataTable EnlistarTodo()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select ci.Id, pac.Nombre + ' ' + pac.Apellido 'NOMBRE PACIENTE', doc.Nombre + ' ' + pac.Apellido 'NOMBRE DOCTOR', ci.Fecha_Hora_cita 'FECHA DE CITA', ci.Causa_Cita 'CAUSA DE CITA', ci.Estado_Cita 'ESTADO DE CITA' from Citas ci INNER JOIN Doctor doc ON (ci.IdDoctor = doc.Id) INNER JOIN Paciente pac ON (ci.IdPaciente = pac.Id)", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select ci.Id, pac.Nombre + ' ' + pac.Apellido 'NOMBRE PACIENTE', doc.Nombre + ' ' + doc.Apellido 'NOMBRE DOCTOR', Cast (ci.Fecha_Hora_cita as date) 'Fecha de la Cita', CAST (ci.Fecha_Hora_cita as time) 'Hora de la Cita', ci.Causa_Cita 'CAUSA DE CITA', ec.descripción 'ESTADO DE CITA' from Citas ci INNER JOIN Doctores doc ON (ci.IdDoctor = doc.Id) INNER JOIN Pacientes pac ON (ci.IdPaciente = pac.Id) inner join Estado_Cita ec on (ci.Estado_Cita = ec.id_cita)", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
         #endregion

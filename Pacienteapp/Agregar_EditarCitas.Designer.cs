@@ -35,12 +35,12 @@ namespace Pacienteapp
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.TxtNombrePaciente = new System.Windows.Forms.TextBox();
             this.TxtNombreMedico = new System.Windows.Forms.TextBox();
             this.Txtcausa = new System.Windows.Forms.TextBox();
             this.TxtFechaCita = new System.Windows.Forms.MaskedTextBox();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.TxtHora = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -136,19 +136,6 @@ namespace Pacienteapp
             this.label5.Text = "Causa de la cita:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnCancelar.AutoSize = true;
-            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.Location = new System.Drawing.Point(45, 463);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(214, 64);
-            this.BtnCancelar.TabIndex = 5;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
             // BtnGuardar
             // 
             this.BtnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -159,6 +146,7 @@ namespace Pacienteapp
             this.BtnGuardar.TabIndex = 6;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // TxtNombrePaciente
             // 
@@ -196,6 +184,19 @@ namespace Pacienteapp
             this.TxtFechaCita.TabIndex = 12;
             this.TxtFechaCita.ValidatingType = typeof(System.DateTime);
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnCancelar.AutoSize = true;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.Location = new System.Drawing.Point(45, 463);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(214, 64);
+            this.BtnCancelar.TabIndex = 5;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // TxtHora
             // 
             this.TxtHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -213,6 +214,7 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Agregar_EditarCitas";
             this.Text = "Agregar_EditarCitas";
+            this.Load += new System.EventHandler(this.Agregar_EditarCitas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

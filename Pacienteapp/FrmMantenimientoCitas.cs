@@ -23,15 +23,17 @@ namespace Pacienteapp
 
         private bool isPacienteSelected;
 
-        private bool isMedicoSeleceted;
-
         public int Paciente_id { get; set; }
 
         public int Medico_id { get; set; }
 
-        public DateTime FechayHora { get; set; }
+        public bool isCancel { get; set; } 
 
-        private MantenimientoCitas _mantenimiento;
+        private MantenimientoCitas _mantenimientoCitas;
+
+        private MantenimientoPacientes _mantenimientoPacientes;
+
+        private MantenimientoDoctores _mantenimientoDoctores;
 
         private ListadoPaciente_Medico _listarPacientes;
 
@@ -47,7 +49,11 @@ namespace Pacienteapp
 
             SqlConnection connection = new SqlConnection(connectionString);
 
-            _mantenimiento = new MantenimientoCitas(connection);
+            _mantenimientoCitas = new MantenimientoCitas(connection);
+
+            _mantenimientoDoctores = new MantenimientoDoctores(connection);
+
+            _mantenimientoPacientes = new MantenimientoPacientes(connection);
         }
 
         public static FrmMantenimientoCitas Instancia { get; set; } = new FrmMantenimientoCitas();
@@ -59,6 +65,14 @@ namespace Pacienteapp
             {
                 id = Convert.ToInt32(DgvCitas.Rows[e.RowIndex].Cells[0].Value.ToString());
 
+                Pacientes paciente = new Pacientes();
+                paciente = _mantenimientoPacientes.GetById(id.Value);
+                Paciente_id = paciente.Id;
+
+                Doctores medico = new Doctores();
+                medico = _mantenimientoDoctores.GetById(id.Value);
+                Medico_id = medico.Id;
+
                 BtnEditar.Visible = true;
                 BtnEliminar.Visible = true;
             }
@@ -66,14 +80,17 @@ namespace Pacienteapp
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            isCancel = false;
 
             isAdding = true;
+
+            isEdit = false;
 
             _listarPacientes = new ListadoPaciente_Medico();
 
             _listarPacientes.ShowDialog();
 
-            if (Paciente_id >= 0)
+            if (Paciente_id >= 0 && isCancel == false)
             {
                 isAdding = false;
 
@@ -83,44 +100,52 @@ namespace Pacienteapp
 
                 _listarMedicos.ShowDialog();
 
-                if (Medico_id >= 0)
+                if (Medico_id >= 0 && isCancel == false)
                 {
                     isPacienteSelected = false;
-
-                    isMedicoSeleceted = true;
 
                     _agregar_editar = new Agregar_EditarCitas();
                     _agregar_editar.ShowDialog();
                 }
             }
 
-            Citas newCita = new Citas 
-            { 
-                
-            };
-
-
-
-            MessageBox.Show("Cita agregada con éxito", "");
-
         }
 
         private void FrmMantenimientoCitas_Activated(object sender, EventArgs e)
         {
             LoadData();
-
-            isEdit = false;
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (id >= 0)
             {
-                _listar = new ListadoPaciente_Medico();
+                isAdding = true;
 
                 isEdit = true;
-                _listar.Show();
-                this.Hide();
+
+                _listarPacientes = new ListadoPaciente_Medico();
+
+                _listarPacientes.ShowDialog();
+
+                if (Paciente_id >= 0)
+                {
+                    isAdding = false;
+
+                    isPacienteSelected = true;
+
+                    _listarMedicos = new ListadoPaciente_Medico();
+
+                    _listarMedicos.ShowDialog();
+
+                    if (Medico_id >= 0)
+                    {
+                        isPacienteSelected = false;
+
+                        _agregar_editar = new Agregar_EditarCitas();
+                        _agregar_editar.ShowDialog();
+                    }
+                }
             }
             else
             {
@@ -136,7 +161,7 @@ namespace Pacienteapp
 
                 if (result == DialogResult.OK)
                 {
-                    _mantenimiento.Eliminar(GetSelectedItem());
+                    _mantenimientoCitas.Eliminar(GetSelectedItem());
 
                     MessageBox.Show("Cita eliminada satisfactoriamente!");
 
@@ -176,7 +201,7 @@ namespace Pacienteapp
 
         private void LoadData()
         {
-            DgvCitas.DataSource = _mantenimiento.GetAll();
+            DgvCitas.DataSource = _mantenimientoCitas.GetAll();
             DgvCitas.Columns[0].Visible = false;
             DgvCitas.ClearSelection();
         }
