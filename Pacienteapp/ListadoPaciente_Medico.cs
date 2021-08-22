@@ -60,12 +60,6 @@ namespace Pacienteapp
 
                 LblSelecciona.Text = "Selecciona un medico:";
 
-                BtnBuscar.Visible = true;
-
-                BtnLimpiar.Visible = true;
-
-                TxtBuscarCedula.Visible = true;
-
                 LoadData();
                 DgvListado.ClearSelection();
 
@@ -122,9 +116,12 @@ namespace Pacienteapp
 
         private void DgvListado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id = Convert.ToInt32(DgvListado.Rows[e.RowIndex].Cells[0].Value.ToString());
+            if (e.RowIndex >= 0)
+            {
+                id = Convert.ToInt32(DgvListado.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-            BtnSiguiente.Visible = true;
+                BtnSiguiente.Visible = true;
+            }
         }
 
         #endregion

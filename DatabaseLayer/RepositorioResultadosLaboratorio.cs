@@ -55,6 +55,7 @@ namespace DatabaseLayer
             return EjecutarConsulta(sqlCommand);
         }
 
+
         public ResultadosLaboratorio EnlistarUno(int id)
         {
             ResultadosLaboratorio citas = new ResultadosLaboratorio();

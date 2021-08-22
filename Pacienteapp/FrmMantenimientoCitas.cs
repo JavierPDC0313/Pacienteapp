@@ -75,6 +75,25 @@ namespace Pacienteapp
 
                 BtnEditar.Visible = true;
                 BtnEliminar.Visible = true;
+
+                if (GetCitaStatus() == 1)
+                {
+                    BtnConsultar.Visible = true;
+                    BtnConsultarResultado.Visible = false;
+                    BtnVerResultados.Visible = false;
+                }
+                else if (GetCitaStatus() == 2)
+                {
+                    BtnConsultar.Visible = false;
+                    BtnConsultarResultado.Visible = true;
+                    BtnVerResultados.Visible = false;
+                }
+                else
+                {
+                    BtnConsultar.Visible = false;
+                    BtnConsultarResultado.Visible = false;
+                    BtnVerResultados.Visible = true;
+                }
             }
         }
 
@@ -108,6 +127,11 @@ namespace Pacienteapp
                     _agregar_editar.ShowDialog();
                 }
             }
+
+        }
+
+        private void BtnConsultar_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -214,6 +238,14 @@ namespace Pacienteapp
         public bool GetIsPacienteSelected()
         {
             return isPacienteSelected;
+        }
+
+        private int GetCitaStatus()
+        {
+            Citas cita = new Citas();
+            cita = _mantenimientoCitas.GetById(id.Value);
+
+            return cita.Estado;
         }
 
         #endregion

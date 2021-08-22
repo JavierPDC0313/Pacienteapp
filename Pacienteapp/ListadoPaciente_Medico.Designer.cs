@@ -144,7 +144,6 @@ namespace Pacienteapp
             this.TxtBuscarCedula.Name = "TxtBuscarCedula";
             this.TxtBuscarCedula.Size = new System.Drawing.Size(270, 23);
             this.TxtBuscarCedula.TabIndex = 1;
-            this.TxtBuscarCedula.Visible = false;
             // 
             // tableLayoutPanel3
             // 
@@ -172,7 +171,6 @@ namespace Pacienteapp
             this.BtnBuscar.TabIndex = 1;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
-            this.BtnBuscar.Visible = false;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // BtnLimpiar
@@ -185,7 +183,6 @@ namespace Pacienteapp
             this.BtnLimpiar.TabIndex = 2;
             this.BtnLimpiar.Text = "Limpiar Selección";
             this.BtnLimpiar.UseVisualStyleBackColor = true;
-            this.BtnLimpiar.Visible = false;
             this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // ListadoPaciente_Medico

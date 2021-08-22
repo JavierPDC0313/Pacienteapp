@@ -49,6 +49,17 @@ namespace DatabaseLayer
             return EjecutarConsulta(sqlCommand);
         }
 
+        public bool UpdateStatus(int estadoCita, int id)
+        {
+            SqlCommand sqlCommand = new SqlCommand("update Citas set Estado_Cita = @estadoCita where Id = @id", connection);
+
+            sqlCommand.Parameters.AddWithValue("@estadoCita", estadoCita);
+            sqlCommand.Parameters.AddWithValue("@id", id);
+
+            return EjecutarConsulta(sqlCommand);
+
+        }
+
         public Citas EnlistarUno(int id)
         {
             Citas citas = new Citas();
