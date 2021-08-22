@@ -26,6 +26,14 @@ namespace Pacienteapp
             LoadForm();
         }
 
+        private void FrmHomeDisplay_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmLogin login = FrmLogin.Login;
+            login.Show();
+
+            this.Close();
+        }
+
         #endregion
 
         #region Methods
@@ -37,7 +45,7 @@ namespace Pacienteapp
                 btnMatenimiento_Medico_Citas.Text = "Mantenimiento de médicos";
                 btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "Mantenimiento de citas";
             }
-            else if (TipoUsuario == "Médico")
+            else if (TipoUsuario == "Medico")
             {
                 btnMatenimiento_Usuario_Paciente.Text = "Mantenimiento de pacientes";
                 btnMatenimiento_Medico_Citas.Text = "Mantenimiento de citas";
@@ -45,11 +53,5 @@ namespace Pacienteapp
             }
         }
         #endregion
-
-        private void FrmHomeDisplay_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            FrmLogin.Login.Show();
-            this.Close();
-        }
     }
 }
