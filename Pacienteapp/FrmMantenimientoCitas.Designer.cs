@@ -69,6 +69,7 @@ namespace Pacienteapp
             this.BtnAgregar.TabIndex = 0;
             this.BtnAgregar.Text = "Agregar Cita";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // DgvCitas
             // 
@@ -80,6 +81,7 @@ namespace Pacienteapp
             this.DgvCitas.RowTemplate.Height = 25;
             this.DgvCitas.Size = new System.Drawing.Size(733, 261);
             this.DgvCitas.TabIndex = 1;
+            this.DgvCitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCitas_CellClick);
             // 
             // BtnEditar
             // 
@@ -93,6 +95,7 @@ namespace Pacienteapp
             this.BtnEditar.Text = "Editar";
             this.BtnEditar.UseVisualStyleBackColor = true;
             this.BtnEditar.Visible = false;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // BtnEliminar
             // 
@@ -105,6 +108,7 @@ namespace Pacienteapp
             this.BtnEliminar.TabIndex = 3;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // FrmMantenimientoCitas
             // 
@@ -115,6 +119,7 @@ namespace Pacienteapp
             this.Name = "FrmMantenimientoCitas";
             this.Text = "FrmMantenimientoCitas";
             this.Activated += new System.EventHandler(this.FrmMantenimientoCitas_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMantenimientoCitas_FormClosing);
             this.Load += new System.EventHandler(this.FrmMantenimientoCitas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

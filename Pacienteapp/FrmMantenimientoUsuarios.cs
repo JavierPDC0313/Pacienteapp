@@ -19,6 +19,12 @@ namespace Pacienteapp
 
         private bool isEdit;
 
+        private bool IsAdding;
+
+        private bool isPacienteSelected;
+
+        private bool isMedicoSeleceted;
+
         private MantenimientoUsuarios _mantenimiento;
 
         private FrmAgregar_EditarUsuario Agregar_Editar;
