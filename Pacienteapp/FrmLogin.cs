@@ -54,6 +54,21 @@ namespace Pacienteapp
             txtContraseño.Clear();
         }
 
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Desea salir del programa?", "Alerta", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (CheckCredentials() == true)
@@ -133,7 +148,8 @@ namespace Pacienteapp
 
         private void OpenHomeDisplay()
         {
-            homeDisplay = new FrmHomeDisplay(ItemUsuario.TipoUsuario);
+            homeDisplay = FrmHomeDisplay.HomeDisplay;
+            homeDisplay.TipoUsuario = ItemUsuario.TipoUsuario;
             homeDisplay.Show();
 
             this.Hide();

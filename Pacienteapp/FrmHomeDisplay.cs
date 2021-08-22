@@ -8,15 +8,14 @@ using System.Windows.Forms;
 
 namespace Pacienteapp
 {
-    public partial class FrmHomeDisplay : Form
+    public sealed partial class FrmHomeDisplay : Form
     {
+        public static FrmHomeDisplay HomeDisplay { get; set; } = new FrmHomeDisplay();
         public string TipoUsuario;
 
-        public FrmHomeDisplay(string tipoUsuario)
+        public FrmHomeDisplay()
         {
             InitializeComponent();
-
-            TipoUsuario = tipoUsuario;
         }
 
         #region Events
@@ -46,15 +45,61 @@ namespace Pacienteapp
         {
             if (TipoUsuario == "Administrador")
             {
-                btnMatenimiento_Usuario_Paciente.Text = "Mantenimiento de usuarios";
-                btnMatenimiento_Medico_Citas.Text = "Mantenimiento de médicos";
-                btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "Mantenimiento de citas";
+                btnMatenimiento_Usuario_Paciente.Text = "Mantenimiento usuarios";
+                btnMatenimiento_Medico_Citas.Text = "Mantenimiento médicos";
+                btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "Mantenimiento pruebas laboratorio";
             }
             else if (TipoUsuario == "Medico")
             {
-                btnMatenimiento_Usuario_Paciente.Text = "Mantenimiento de pacientes";
-                btnMatenimiento_Medico_Citas.Text = "Mantenimiento de citas";
-                btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "Mantenimiento de resultados";
+                btnMatenimiento_Usuario_Paciente.Text = "Mantenimiento pacientes";
+                btnMatenimiento_Medico_Citas.Text = "Mantenimiento citas";
+                btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text = "Mantenimiento resultados";
+            }
+        }
+
+        private void SwitchButton()
+        {
+            if (btnMatenimiento_Usuario_Paciente.Text == "Mantenimiento usuarios")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
+
+                this.Hide();
+            }
+            else if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento médicos")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
+
+                this.Hide();
+            }
+            else if (btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text == "Mantenimiento pruebas laboratorio")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
+
+                this.Hide();
+            }
+            else if (btnMatenimiento_Usuario_Paciente.Text == "Mantenimiento pacientes")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
+
+                this.Hide();
+            }
+            else if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento citas")
+            {
+                FrmMantenimientoCitas mantenimientoCitas = FrmMantenimientoCitas.Instancia;
+                mantenimientoCitas.Show();
+
+                this.Hide();
+            }
+            else if (btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text == "Mantenimiento resultados")
+            {
+                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
+                mantenimientoUsuarios.Show();
+
+                this.Hide();
             }
         }
         #endregion
