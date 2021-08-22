@@ -169,7 +169,6 @@ namespace Pacienteapp
             this.Name = "FrmLogin";
             this.Text = "Iniciar sesion";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.VisibleChanged += new System.EventHandler(this.FrmLogin_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);

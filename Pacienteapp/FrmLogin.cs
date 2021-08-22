@@ -57,15 +57,12 @@ namespace Pacienteapp
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-        }
 
-        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
             DialogResult result = MessageBox.Show("¿Desea salir del programa?", "Alerta", MessageBoxButtons.OKCancel);
 
             if (result == DialogResult.OK)
             {
-                this.Close();
+                e.Cancel = false;
             }
         }
 

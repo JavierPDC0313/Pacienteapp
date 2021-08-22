@@ -25,17 +25,14 @@ namespace Pacienteapp
             LoadForm();
         }
 
-        private void FrmHomeDisplay_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            FrmLogin login = FrmLogin.Login;
-            login.Show();
-
-            this.Close();
-        }
-
         private void FrmHomeDisplay_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
+            
+            FrmLogin login = FrmLogin.Login;
+            login.Show();
+
+            this.Hide();
         }
 
         private void FrmHomeDisplay_VisibleChanged(object sender, EventArgs e)
