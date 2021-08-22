@@ -17,7 +17,7 @@ namespace DatabaseLayer
         #region Metodos_CRUD
         public bool Agregar(Citas item)
         {
-            SqlCommand sqlCommand = new SqlCommand("insert into Citas(IdPaciente, IdDoctor, Fecha_Hora_cita, Causa_cita, Estado_cita) values(@idpaciente, @iddoctor, @fecha_hora_cita, @causa_cita, @estado_cita)", connection);
+            SqlCommand sqlCommand = new SqlCommand("insert into Citas(IdPaciente, IdDoctor, Fecha_Hora_cita, Causa_cita, Estado_cita) values(@idpaciente, @iddoctor, @fecha_hora_cita, @causa_cita, 1)", connection);
 
             sqlCommand.Parameters.AddWithValue("@idpaciente", item.IdPaciente);
             sqlCommand.Parameters.AddWithValue("@iddoctor", item.IdDoctor);

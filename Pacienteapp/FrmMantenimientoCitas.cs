@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BussinessLayer;
+using DatabaseLayer.Models;
 
 namespace Pacienteapp
 {
@@ -28,11 +29,15 @@ namespace Pacienteapp
 
         public int Medico_id { get; set; }
 
+        public DateTime FechayHora { get; set; }
+
         private MantenimientoCitas _mantenimiento;
 
         private ListadoPaciente_Medico _listarPacientes;
 
         private ListadoPaciente_Medico _listarMedicos;
+
+        private Agregar_EditarCitas _agregar_editar;
 
         private FrmMantenimientoCitas()
         {
@@ -80,10 +85,24 @@ namespace Pacienteapp
 
                 if (Medico_id >= 0)
                 {
+                    isPacienteSelected = false;
 
+                    isMedicoSeleceted = true;
+
+                    _agregar_editar = new Agregar_EditarCitas();
+                    _agregar_editar.ShowDialog();
                 }
             }
-            this.Hide();
+
+            Citas newCita = new Citas 
+            { 
+                
+            };
+
+
+
+            MessageBox.Show("Cita agregada con éxito", "");
+
         }
 
         private void FrmMantenimientoCitas_Activated(object sender, EventArgs e)

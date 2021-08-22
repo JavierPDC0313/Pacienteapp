@@ -38,6 +38,7 @@ namespace Pacienteapp
             this.TxtBuscarCedula = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnBuscar = new System.Windows.Forms.Button();
+            this.BtnLimpiar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -144,6 +145,7 @@ namespace Pacienteapp
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.BtnBuscar, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.BtnLimpiar, 0, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
@@ -156,7 +158,7 @@ namespace Pacienteapp
             // 
             this.BtnBuscar.AutoSize = true;
             this.BtnBuscar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnBuscar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnBuscar.Location = new System.Drawing.Point(3, 3);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(106, 40);
@@ -164,6 +166,19 @@ namespace Pacienteapp
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Visible = false;
+            // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.AutoSize = true;
+            this.BtnLimpiar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnLimpiar.Location = new System.Drawing.Point(3, 49);
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(106, 40);
+            this.BtnLimpiar.TabIndex = 2;
+            this.BtnLimpiar.Text = "Limpiar Selección";
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            this.BtnLimpiar.Visible = false;
+            this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
             // ListadoPaciente_Medico
             // 
@@ -196,5 +211,6 @@ namespace Pacienteapp
         private System.Windows.Forms.TextBox TxtBuscarCedula;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button BtnBuscar;
+        private System.Windows.Forms.Button BtnLimpiar;
     }
 }

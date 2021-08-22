@@ -55,6 +55,8 @@ namespace Pacienteapp
 
                 BtnBuscar.Visible = true;
 
+                BtnLimpiar.Visible = true;
+
                 TxtBuscarCedula.Visible = true;
             }
 
@@ -75,6 +77,13 @@ namespace Pacienteapp
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            TxtBuscarCedula.Text = "";
+
+            DgvListado.ClearSelection();
         }
 
         private void BtnSiguiente_Click(object sender, EventArgs e)

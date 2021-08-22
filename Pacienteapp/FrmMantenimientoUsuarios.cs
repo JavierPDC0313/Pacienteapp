@@ -117,6 +117,8 @@ namespace Pacienteapp
             e.Cancel = true;
 
             this.Hide();
+
+            FrmHomeDisplay.Instancia.Show();
         }
 
         #endregion
