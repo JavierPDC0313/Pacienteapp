@@ -97,11 +97,7 @@ namespace Pacienteapp
         {
             if (id >= 0)
             {
-                _listar = new ListadoPaciente_Medico();
 
-                isEdit = true;
-                _listar.Show();
-                this.Hide();
             }
             else
             {
