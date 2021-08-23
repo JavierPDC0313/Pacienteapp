@@ -121,7 +121,6 @@ namespace Pacienteapp
 
                         this.Close();
                     }
-
                 }
             }
             else
@@ -150,8 +149,6 @@ namespace Pacienteapp
             }
 
             this.Hide();
-
-
         }
 
         #endregion

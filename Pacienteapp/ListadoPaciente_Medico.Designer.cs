@@ -144,6 +144,7 @@ namespace Pacienteapp
             this.TxtBuscarCedula.Name = "TxtBuscarCedula";
             this.TxtBuscarCedula.Size = new System.Drawing.Size(270, 23);
             this.TxtBuscarCedula.TabIndex = 1;
+            this.TxtBuscarCedula.TextChanged += new System.EventHandler(this.TxtBuscarCedula_TextChanged);
             // 
             // tableLayoutPanel3
             // 

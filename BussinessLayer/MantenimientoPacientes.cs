@@ -5,6 +5,7 @@ using DatabaseLayer;
 using DatabaseLayer.Models;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace BussinessLayer
 {
@@ -43,5 +44,15 @@ namespace BussinessLayer
             return repository.EnlistarTodo();
         }
 
+        public int GetLastId()
+        {
+            return repository.EnlistarUltimoId();
+        }
+
+        public void CrearDirectorio(string directory)
+        {
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+        }
     }
 }

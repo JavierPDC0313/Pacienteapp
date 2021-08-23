@@ -157,5 +157,10 @@ namespace Pacienteapp
             }
         }
         #endregion
+
+        private void TxtBuscarCedula_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

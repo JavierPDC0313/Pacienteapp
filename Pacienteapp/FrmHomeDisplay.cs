@@ -95,7 +95,8 @@ namespace Pacienteapp
         {
             if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento médicos")
             {
-                FrmMantenimientoUsuarios.Instancia.Show();
+                FrmMantenimientoCrearMedicos mantenimientoMedico = FrmMantenimientoCrearMedicos.Instancia;
+                mantenimientoMedico.Show();
 
                 this.Hide();
             }
@@ -110,8 +111,8 @@ namespace Pacienteapp
         {
             if (btnMatenimiento_PruebaLaboratorio_ResultadoLaboratorio.Text == "Mantenimiento pruebas laboratorio")
             {
-                FrmMantenimientoUsuarios mantenimientoUsuarios = FrmMantenimientoUsuarios.Instancia;
-                mantenimientoUsuarios.Show();
+                FrmListadoPruebaLaboratorio mantenimientoPruebaLB = FrmListadoPruebaLaboratorio.Instancia;
+                mantenimientoPruebaLB.Show();
 
                 this.Hide();
             }

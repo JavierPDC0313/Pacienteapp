@@ -46,7 +46,10 @@ namespace BussinessLayer
             return repository.UserExists(nombreUsuario);
         }
 
-
+        public bool UserIsEmpty()
+        {
+            return repository.UserIsEmpty();
+        }
 
     }
 }
