@@ -65,13 +65,12 @@ namespace Pacienteapp
             {
                 id = Convert.ToInt32(DgvCitas.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                Pacientes paciente = new Pacientes();
-                paciente = _mantenimientoPacientes.GetById(id.Value);
-                Paciente_id = paciente.Id;
+                Citas cita = new Citas();
+                cita = _mantenimientoCitas.GetById(id.Value);
 
-                Doctores medico = new Doctores();
-                medico = _mantenimientoDoctores.GetById(id.Value);
-                Medico_id = medico.Id;
+                Paciente_id = cita.IdPaciente;
+
+                Medico_id = cita.IdDoctor;
 
                 BtnEditar.Visible = true;
                 BtnEliminar.Visible = true;
@@ -94,6 +93,14 @@ namespace Pacienteapp
                     BtnConsultarResultado.Visible = false;
                     BtnVerResultados.Visible = true;
                 }
+            }
+            else
+            {
+                BtnConsultar.Visible = false;
+                BtnConsultarResultado.Visible = false;
+                BtnEditar.Visible = false;
+                BtnEliminar.Visible = false;
+                BtnVerResultados.Visible = false;
             }
         }
 
@@ -132,7 +139,23 @@ namespace Pacienteapp
 
         private void BtnConsultar_Click(object sender, EventArgs e)
         {
+            FrmListadoPruebas_Resultados listado = new FrmListadoPruebas_Resultados(1);
+            listado.Show();
+            this.Hide();
+        }
 
+        private void BtnConsultarResultado_Click(object sender, EventArgs e)
+        {
+            FrmListadoPruebas_Resultados listado = new FrmListadoPruebas_Resultados(2);
+            listado.Show();
+            this.Hide();
+        }
+
+        private void BtnVerResultados_Click(object sender, EventArgs e)
+        {
+            FrmListadoPruebas_Resultados listado = new FrmListadoPruebas_Resultados(3);
+            listado.Show();
+            this.Hide();
         }
 
         private void FrmMantenimientoCitas_Activated(object sender, EventArgs e)

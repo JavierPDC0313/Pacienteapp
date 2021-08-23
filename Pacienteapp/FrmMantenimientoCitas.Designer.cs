@@ -137,6 +137,7 @@ namespace Pacienteapp
             this.BtnConsultar.TabIndex = 4;
             this.BtnConsultar.Text = "Consultar";
             this.BtnConsultar.UseVisualStyleBackColor = true;
+            this.BtnConsultar.Visible = false;
             this.BtnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
             // 
             // BtnConsultarResultado
@@ -150,6 +151,8 @@ namespace Pacienteapp
             this.BtnConsultarResultado.TabIndex = 5;
             this.BtnConsultarResultado.Text = "Consultar resultados";
             this.BtnConsultarResultado.UseVisualStyleBackColor = true;
+            this.BtnConsultarResultado.Visible = false;
+            this.BtnConsultarResultado.Click += new System.EventHandler(this.BtnConsultarResultado_Click);
             // 
             // BtnVerResultados
             // 
@@ -162,6 +165,8 @@ namespace Pacienteapp
             this.BtnVerResultados.TabIndex = 6;
             this.BtnVerResultados.Text = "Ver resultados";
             this.BtnVerResultados.UseVisualStyleBackColor = true;
+            this.BtnVerResultados.Visible = false;
+            this.BtnVerResultados.Click += new System.EventHandler(this.BtnVerResultados_Click);
             // 
             // FrmMantenimientoCitas
             // 

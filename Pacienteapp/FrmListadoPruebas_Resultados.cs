@@ -36,6 +36,10 @@ namespace Pacienteapp
             SqlConnection connection = new SqlConnection(connectionString);
 
             _mantenimientoPruebas = new MantenimientoPruebasLaboratorio(connection);
+
+            _mantenimientoCitas = new MantenimientoCitas(connection);
+
+            _mantenimientoResultados = new MantenimientoResultadosLaboratorio(connection);
         }
         #region Events
         private void FrmListadoPruebas_Resultados_Load(object sender, EventArgs e)
@@ -54,7 +58,8 @@ namespace Pacienteapp
             }
             else
             {
-
+                BtnCompletar.Visible = false;
+                DgvListado.Enabled = false;
             }
 
         }
@@ -92,6 +97,7 @@ namespace Pacienteapp
                         {
                             IdPaciente = cita.IdPaciente,
                             IdCita = cita.Id,
+                            IdDoctor = cita.IdDoctor,
                             IdPruebaLaboraratorio = Convert.ToInt32(row.Cells[0].Value.ToString()),
                             Resultado = "pendiente",
                             EstadoResultado = 1
@@ -101,6 +107,10 @@ namespace Pacienteapp
                     }
 
                     _mantenimientoCitas.UpdateStatus(2, FrmMantenimientoCitas.Instancia.GetSelectedItem());
+
+                    MessageBox.Show("Pruebas asignadas Satisfactoriamente!", "Notificación");
+
+                    this.Close();
                 }
                 else
                 {
@@ -109,8 +119,24 @@ namespace Pacienteapp
             }
             else
             {
+                if (id >= 0)
+                {
+                    _mantenimientoCitas.UpdateStatus(3, FrmMantenimientoCitas.Instancia.GetSelectedItem());
 
+                    MessageBox.Show("Cita completada con éxito!", "Notificación");
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un resultado", "Advertencia");
+                }
             }
+        }
+
+        private void FrmListadoPruebas_Resultados_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FrmMantenimientoCitas.Instancia.Show();
         }
 
         #endregion
@@ -126,12 +152,13 @@ namespace Pacienteapp
             }
             else if (status == 2)
             {
-                DgvListado.DataSource = _mantenimientoResultados.GetAll();
+                DgvListado.DataSource = _mantenimientoResultados.GetAllByPatient(FrmMantenimientoCitas.Instancia.Paciente_id);
                 DgvListado.ClearSelection();
             }
             else
             {
-
+                DgvListado.DataSource = _mantenimientoResultados.GetAllCompletedByCita(2, FrmMantenimientoCitas.Instancia.GetSelectedItem());
+                DgvListado.ClearSelection();
             }
         }
 

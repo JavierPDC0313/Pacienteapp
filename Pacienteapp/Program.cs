@@ -17,7 +17,7 @@ namespace Pacienteapp
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(FrmMantenimientoCitas.Instancia);
+            Application.Run(FrmLogin.Login);
         }
     }
 }

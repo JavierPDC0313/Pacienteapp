@@ -72,6 +72,7 @@ namespace Pacienteapp
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowTemplate.Height = 25;
+            this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(648, 239);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellClick);
@@ -87,6 +88,7 @@ namespace Pacienteapp
             this.BtnCompletar.TabIndex = 1;
             this.BtnCompletar.Text = "Realizar Pruebas";
             this.BtnCompletar.UseVisualStyleBackColor = true;
+            this.BtnCompletar.Visible = false;
             this.BtnCompletar.Click += new System.EventHandler(this.BtnCompletar_Click);
             // 
             // BtnVolver
@@ -123,6 +125,7 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmListadoPruebas_Resultados";
             this.Text = "FrmListadoPruebas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmListadoPruebas_Resultados_FormClosing);
             this.Load += new System.EventHandler(this.FrmListadoPruebas_Resultados_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

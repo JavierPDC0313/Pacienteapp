@@ -43,6 +43,16 @@ namespace BussinessLayer
             return repository.EnlistarTodo();
         }
 
+        public DataTable GetAllByPatient(int idPaciente)
+        {
+            return repository.GetAllByPatient(idPaciente);
+        }
+
+        public DataTable GetAllCompletedByCita(int estadoResultado, int idCita)
+        {
+            return repository.GetAllCompletedByCita(estadoResultado, idCita);
+        }
+
         public DataTable GetAllPending()
         {
             return repository.EnlistarPendientes();
