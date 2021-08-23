@@ -31,17 +31,13 @@ namespace DatabaseLayer
             return EjecutarConsulta(sqlCommand);
         }
 
-        public bool Editar(ResultadosLaboratorio item)
+        public bool UpdateStatus(int status, int id, string resultado)
         {
-            SqlCommand sqlCommand = new SqlCommand("update Resultados_Laboratorio set IdPaciente = @idpaciente, IdCita =  @idcita, IdPruebaLaboratorio = @idpruebalaboratorio, IdDoctor = @iddoctor, Resultado = @resultado, Estado_Resultado = @estado_resultado where Id = @id", connection);
+            SqlCommand sqlCommand = new SqlCommand("update Resultados_Laboratorio set Estado_Resultado = @estado_resultado, Resulado = @resultado where Id = @id", connection);
 
-            sqlCommand.Parameters.AddWithValue("@id", item.Id);
-            sqlCommand.Parameters.AddWithValue("@idpaciente", item.IdPaciente);
-            sqlCommand.Parameters.AddWithValue("@idcita", item.IdCita);
-            sqlCommand.Parameters.AddWithValue("@idpruebalaboratorio", item.IdPruebaLaboraratorio);
-            sqlCommand.Parameters.AddWithValue("@iddoctor", item.IdDoctor);
-            sqlCommand.Parameters.AddWithValue("@resultado", item.Resultado);
-            sqlCommand.Parameters.AddWithValue("@estado_resultado", item.EstadoResultado);
+            sqlCommand.Parameters.AddWithValue("@estado_resultado", status);
+            sqlCommand.Parameters.AddWithValue("@id", id);
+            sqlCommand.Parameters.AddWithValue("@resultado", resultado);
 
             return EjecutarConsulta(sqlCommand);
         }
@@ -96,7 +92,7 @@ namespace DatabaseLayer
 
         public DataTable EnlistarTodo()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select rl.Id, pac.Nombre + ' ' + pac.Apellido 'NOMBRE PACIENTE', rl.IdCita, pl.Nombre, doc.Nombre + ' ' + doc.Apellido 'NOMBRE DOCTOR', rl.Resultado, rl.Estado_Resultado 'ESTADO', from Resultados_Laboratorio rl INNER JOIN Doctor doc ON (rl.IdDoctor = doc.Id) INNER JOIN Paciente pac ON (rl.IdPaciente = pac.Id) INNER JOIN PruebasLaboratorio pl ON (rl.IdPruebaLaboratorio = pl.Id)", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select rl.Id, pa.Nombre+' '+pa.Apellido 'Paciente', pa.Cedula 'Cedula del paciente', pl.Nombre 'Prueba asignada' from Resultados_Laboratorio rl join Pacientes pa on (rl.IdPaciente = pa.Id) join PruebasLaboratorio pl on (rl.IdPruebaLaboratorio = pl.Nombre)", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
 
@@ -119,9 +115,22 @@ namespace DatabaseLayer
             return ObtenerDatos(dataAdapter);
         }
 
-        public DataTable EnlistarPendientes()
+        public DataTable EnlistarPendientesPorCedula(int status, string cedula)
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select rl.Id, pac.Nombre + ' ' + pac.Apellido 'NOMBRE PACIENTE', rl.IdCita, pl.Nombre, doc.Nombre + ' ' + doc.Apellido 'NOMBRE DOCTOR', rl.Resultado, rl.Estado_Resultado 'ESTADO', from Resultados_Laboratorio rl INNER JOIN Doctor doc ON (rl.IdDoctor = doc.Id) INNER JOIN Paciente pac ON (rl.IdPaciente = pac.Id) INNER JOIN PruebasLaboratorio pl ON (rl.IdPruebaLaboratorio = pl.Id) where Estado_Resultado = 1", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select rl.Id, pa.Nombre+' '+pa.Apellido 'Paciente', pa.Cedula 'Cedula del paciente', pl.Nombre 'Prueba asignada' from Resultados_Laboratorio rl join Pacientes pa on (rl.IdPaciente = pa.Id) join PruebasLaboratorio pl on (rl.IdPruebaLaboratorio = pl.Id) where rl.Estado_Resultado = @estado and pa.Cedula = @cedula", connection);
+
+            sqlDataAdapter.SelectCommand.Parameters.AddWithValue("@estado", status);
+            sqlDataAdapter.SelectCommand.Parameters.AddWithValue("@cedula", cedula);
+
+            return ObtenerDatos(sqlDataAdapter);
+        }
+
+        public DataTable EnlistarPendientes(int status)
+        {
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select rl.Id, pa.Nombre+' '+pa.Apellido 'Paciente', pa.Cedula 'Cedula del paciente', pl.Nombre 'Prueba asignada' from Resultados_Laboratorio rl join Pacientes pa on (rl.IdPaciente = pa.Id) join PruebasLaboratorio pl on (rl.IdPruebaLaboratorio = pl.Id) where rl.Estado_Resultado = @estado", connection);
+
+            sqlDataAdapter.SelectCommand.Parameters.AddWithValue("@estado", status);
+
             return ObtenerDatos(sqlDataAdapter);
         }
         #endregion
