@@ -168,6 +168,7 @@ namespace Pacienteapp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
             this.Text = "Iniciar sesion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.VisibleChanged += new System.EventHandler(this.FrmLogin_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);

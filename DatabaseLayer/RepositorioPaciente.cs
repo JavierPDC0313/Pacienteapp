@@ -104,7 +104,7 @@ namespace DatabaseLayer
 
         public DataTable EnlistarTodo()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Pacientes", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select p.Id, p.Nombre, p.Apellido, p.Telefono, p.Direccion, p.Cedula, p.FechaNacimiento,  CASE p.Fumador WHEN 1 THEN 'Si' ELSE 'No' END AS Fumador, p.Alergias, p.foto from Pacientes p", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
         #endregion

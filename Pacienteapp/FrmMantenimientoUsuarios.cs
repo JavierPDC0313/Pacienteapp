@@ -19,12 +19,6 @@ namespace Pacienteapp
 
         private bool isEdit;
 
-        private bool IsAdding;
-
-        private bool isPacienteSelected;
-
-        private bool isMedicoSeleceted;
-
         private MantenimientoUsuarios _mantenimiento;
 
         private FrmAgregar_EditarUsuario Agregar_Editar;
@@ -115,6 +109,9 @@ namespace Pacienteapp
         private void FrmMantenimientoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
+
+            FrmHomeDisplay homeDisplay = FrmHomeDisplay.HomeDisplay;
+            homeDisplay.Show();
 
             this.Hide();
 

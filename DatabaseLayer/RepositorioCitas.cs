@@ -100,6 +100,7 @@ namespace DatabaseLayer
         public DataTable EnlistarTodo()
         {
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select ci.Id, pac.Nombre + ' ' + pac.Apellido 'NOMBRE PACIENTE', doc.Nombre + ' ' + doc.Apellido 'NOMBRE DOCTOR', Cast (ci.Fecha_Hora_cita as date) 'Fecha de la Cita', CAST (ci.Fecha_Hora_cita as time) 'Hora de la Cita', ci.Causa_Cita 'CAUSA DE CITA', ec.descripción 'ESTADO DE CITA' from Citas ci INNER JOIN Doctores doc ON (ci.IdDoctor = doc.Id) INNER JOIN Pacientes pac ON (ci.IdPaciente = pac.Id) inner join Estado_Cita ec on (ci.Estado_Cita = ec.id_cita)", connection);
+
             return ObtenerDatos(sqlDataAdapter);
         }
         #endregion
