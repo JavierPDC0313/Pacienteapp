@@ -44,7 +44,7 @@ namespace Pacienteapp
 
                 MessageBox.Show("Resultado agregado con éxito", "Notificacion");
 
-                this.Show();
+                this.Close();
             }
         }
 

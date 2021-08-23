@@ -230,6 +230,8 @@ namespace Pacienteapp
             e.Cancel = true;
 
             this.Hide();
+
+            FrmHomeDisplay.HomeDisplay.Show();
         }
 
         #endregion

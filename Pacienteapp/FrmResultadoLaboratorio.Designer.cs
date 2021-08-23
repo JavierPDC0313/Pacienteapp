@@ -80,6 +80,7 @@ namespace Pacienteapp
             this.DgvPantallaListado.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.DgvPantallaListado, 4);
             this.DgvPantallaListado.RowTemplate.Height = 25;
+            this.DgvPantallaListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvPantallaListado.Size = new System.Drawing.Size(470, 349);
             this.DgvPantallaListado.TabIndex = 1;
             this.DgvPantallaListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPantallaListado_CellClick);
@@ -174,8 +175,8 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmResultadoLaboratorio";
             this.Text = "Resultados de laboratorio";
+            this.Activated += new System.EventHandler(this.FrmResultadoLaboratorio_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmResultadoLaboratorio_FormClosing);
-            this.Load += new System.EventHandler(this.FrmResultadoLaboratorio_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvPantallaListado)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

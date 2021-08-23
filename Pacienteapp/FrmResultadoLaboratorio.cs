@@ -67,7 +67,7 @@ namespace Pacienteapp
             FrmHomeDisplay.HomeDisplay.Show();
         }
 
-        private void FrmResultadoLaboratorio_Load(object sender, EventArgs e)
+        private void FrmResultadoLaboratorio_Activated(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -92,7 +92,6 @@ namespace Pacienteapp
         private void LoadData()
         {
             DgvPantallaListado.DataSource = _mantenimientoResultados.GetAllPending(1);
-            DgvPantallaListado.Rows[0].Visible = false;
             DgvPantallaListado.ClearSelection();
         }
 
