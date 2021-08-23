@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace Pacienteapp
 {
-    public sealed partial class FrmResultadoLaboratorio : Form
+    public sealed partial class FrmMantenimientoPacientes : Form
     {
-        public static FrmResultadoLaboratorio ResultadoLaboratorio { get; set; } = new FrmResultadoLaboratorio();
-        public FrmResultadoLaboratorio()
+        public static FrmMantenimientoPacientes MantenimientoPacientes { get; set; } = new FrmMantenimientoPacientes();
+        public FrmMantenimientoPacientes()
         {
             InitializeComponent();
         }
