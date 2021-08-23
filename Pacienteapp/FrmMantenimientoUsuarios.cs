@@ -92,7 +92,6 @@ namespace Pacienteapp
                     _mantenimiento.Eliminar(GetSelectedItem());
 
                     MessageBox.Show("Usuario eliminado satisfactoriamente!");
-
                 }
             }
             else
@@ -114,8 +113,6 @@ namespace Pacienteapp
             homeDisplay.Show();
 
             this.Hide();
-
-
         }
 
         #endregion

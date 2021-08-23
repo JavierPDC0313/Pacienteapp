@@ -379,6 +379,8 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmAgregar_EditarPacientes";
             this.Text = "Administrar pacientes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAgregar_EditarPacientes_FormClosing);
+            this.Load += new System.EventHandler(this.FrmAgregar_EditarPacientes_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

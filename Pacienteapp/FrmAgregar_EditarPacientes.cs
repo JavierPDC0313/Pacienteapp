@@ -12,27 +12,38 @@ using System.Windows.Forms;
 
 namespace Pacienteapp
 {
-    public partial class FrmAgregar_EditarPacientes : Form
+    public sealed partial class FrmAgregar_EditarPacientes : Form
     {
-        private string TipoAccionar;
-        private int? Id;
+        public static FrmAgregar_EditarPacientes Agregar_EditarPacientes { get; set; } = new FrmAgregar_EditarPacientes();
+
+        public string TipoAccionar;
+        public int? Id;
         private bool DateChanged = false;
         private bool Done;
 
         private MantenimientoPacientes mantenimiento;
 
-        public FrmAgregar_EditarPacientes(string tipoAccionar, int id)
+        public FrmAgregar_EditarPacientes()
         {
             InitializeComponent();
-
-            TipoAccionar = tipoAccionar;
-            Id = id;
 
             string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
             mantenimiento = new MantenimientoPacientes(connection);
         }
         #region Events
+
+        private void FrmAgregar_EditarPacientes_Load(object sender, EventArgs e)
+        {
+            LoadComponets();
+        }
+
+        private void FrmAgregar_EditarPacientes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+
+            CerrarForm();
+        }
 
         private void cBoxFumador_OpcionSi_CheckedChanged(object sender, EventArgs e)
         {
@@ -58,15 +69,6 @@ namespace Pacienteapp
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Accionar();
-
-            if (Done == true)
-            {
-                MessageBox.Show("La consulta se a efectuado exitosamente", "Notificacion");
-            }
-            else if (Done == false)
-            {
-                MessageBox.Show("Ha ocurrido un error, revise los datos ingresados", "Error");
-            }
         }
         #endregion
 
@@ -111,6 +113,8 @@ namespace Pacienteapp
                     pacientes.Foto = txtFoto.Text;
 
                     Done = mantenimiento.Agregar(pacientes);
+
+                    MensagePostEjecucion();
                 }
                 else if (TipoAccionar == "editar")
                 {
@@ -127,6 +131,9 @@ namespace Pacienteapp
                     pacientes.Foto = txtFoto.Text;
 
                     Done = mantenimiento.Editar(pacientes);
+
+                    MensagePostEjecucion();
+                    CerrarForm();
                 }
             }
             else
@@ -172,6 +179,28 @@ namespace Pacienteapp
             cBoxFumador_OpcionNo.Checked = false;
             txtAlergias.Clear();
             txtFoto.Clear();
+        }
+
+        private void MensagePostEjecucion()
+        {
+            if (Done == true)
+            {
+                MessageBox.Show("La consulta se a efectuado exitosamente", "Notificacion");
+
+                DataClear();
+            }
+            else if (Done == false)
+            {
+                MessageBox.Show("Ha ocurrido un error, revise los datos ingresados", "Error");
+            }
+        }
+
+        private void CerrarForm()
+        {
+            FrmMantenimientoPacientes mantenimientoPacientes = FrmMantenimientoPacientes.MantenimientoPacientes;
+            mantenimientoPacientes.Show();
+
+            this.Hide();
         }
         #endregion
     }

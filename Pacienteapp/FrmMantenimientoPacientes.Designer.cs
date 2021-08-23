@@ -74,6 +74,7 @@ namespace Pacienteapp
             this.DGVPantallaListado.RowTemplate.Height = 25;
             this.DGVPantallaListado.Size = new System.Drawing.Size(681, 333);
             this.DGVPantallaListado.TabIndex = 0;
+            this.DGVPantallaListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVPantallaListado_CellClick);
             // 
             // btnEditar
             // 
@@ -87,6 +88,7 @@ namespace Pacienteapp
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -100,6 +102,7 @@ namespace Pacienteapp
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -113,6 +116,7 @@ namespace Pacienteapp
             this.btnEliminar.TabIndex = 1;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // FrmMantenimientoPacientes
             // 
@@ -122,6 +126,9 @@ namespace Pacienteapp
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmMantenimientoPacientes";
             this.Text = "Mantenimiento de pacientes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMantenimientoPacientes_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMantenimientoPacientes_Load);
+            this.VisibleChanged += new System.EventHandler(this.FrmMantenimientoPacientes_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVPantallaListado)).EndInit();
             this.ResumeLayout(false);
