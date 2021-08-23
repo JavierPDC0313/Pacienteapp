@@ -95,10 +95,10 @@ namespace Pacienteapp
         {
             if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento médicos")
             {
-                //FrmMantenimientoCrearMedicos mantenimientoUsuarios = FrmMantenimientoCrearMedicos.Instancia;
-                //mantenimientoUsuarios.Show();
+                FrmMantenimientoCrearMedicos mantenimientoMedico = FrmMantenimientoCrearMedicos.Instancia;
+                mantenimientoMedico.Show();
 
-                //this.Hide();
+                this.Hide();
             }
             else if (btnMatenimiento_Medico_Citas.Text == "Mantenimiento citas")
             {

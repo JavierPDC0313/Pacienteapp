@@ -31,6 +31,8 @@ namespace Pacienteapp
             _mantenimiento = new MantenimientoDoctores(connection); 
         }
 
+        public static FrmMantenimientoCrearMedicos Instancia { get; set; } = new FrmMantenimientoCrearMedicos();
+
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -93,16 +95,12 @@ namespace Pacienteapp
 
         private void BtnCrearNuevoMed_Click(object sender, EventArgs e)
         {
-
+            FrmMantenimientoCrearNuevoMedicos agregar = new FrmMantenimientoCrearNuevoMedicos();
+            agregar.Show();
+            this.Hide();
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            //SearchDgv(TxtBusqueda.Text, 5);
-
-        }
-
-
+       
         private void TxtBuscarMedicos_TextChanged(object sender, EventArgs e)
         {
 
@@ -112,6 +110,16 @@ namespace Pacienteapp
         {
 
       
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DgvMedicosListado_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

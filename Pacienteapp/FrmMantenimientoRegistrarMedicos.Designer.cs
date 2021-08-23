@@ -42,19 +42,19 @@ namespace Pacienteapp
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.BtnCrearMedico = new System.Windows.Forms.Button();
             this.BtnSubirFotos = new System.Windows.Forms.Button();
+            this.LblPicture = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.LblPictureShow = new System.Windows.Forms.Label();
+            this.PbPerfil = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
-            this.LblPicture = new System.Windows.Forms.Label();
             this.PictureDialog = new System.Windows.Forms.OpenFileDialog();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.LblPictureShow = new System.Windows.Forms.Label();
-            this.PbPerfil = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbPerfil)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -178,6 +178,7 @@ namespace Pacienteapp
             this.BtnCrearMedico.TabIndex = 10;
             this.BtnCrearMedico.Text = "Crear Médico";
             this.BtnCrearMedico.UseVisualStyleBackColor = true;
+            this.BtnCrearMedico.Click += new System.EventHandler(this.BtnCrearMedico_Click);
             // 
             // BtnSubirFotos
             // 
@@ -190,6 +191,51 @@ namespace Pacienteapp
             this.BtnSubirFotos.Text = "Buscar Fotos";
             this.BtnSubirFotos.UseVisualStyleBackColor = true;
             this.BtnSubirFotos.Click += new System.EventHandler(this.BtnSubirFotos_Click);
+            // 
+            // LblPicture
+            // 
+            this.LblPicture.AutoSize = true;
+            this.LblPicture.Location = new System.Drawing.Point(3, 221);
+            this.LblPicture.Name = "LblPicture";
+            this.LblPicture.Size = new System.Drawing.Size(80, 15);
+            this.LblPicture.TabIndex = 13;
+            this.LblPicture.Text = "Foto de Perfil:";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.LblPictureShow, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.PbPerfil, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(418, 312);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.01242F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.98758F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(337, 161);
+            this.tableLayoutPanel2.TabIndex = 14;
+            // 
+            // LblPictureShow
+            // 
+            this.LblPictureShow.AutoSize = true;
+            this.LblPictureShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblPictureShow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblPictureShow.Location = new System.Drawing.Point(3, 0);
+            this.LblPictureShow.Name = "LblPictureShow";
+            this.LblPictureShow.Size = new System.Drawing.Size(331, 28);
+            this.LblPictureShow.TabIndex = 0;
+            this.LblPictureShow.Text = "Foto de Perfil";
+            this.LblPictureShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PbPerfil
+            // 
+            this.PbPerfil.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PbPerfil.Location = new System.Drawing.Point(3, 31);
+            this.PbPerfil.Name = "PbPerfil";
+            this.PbPerfil.Size = new System.Drawing.Size(331, 127);
+            this.PbPerfil.TabIndex = 1;
+            this.PbPerfil.TabStop = false;
             // 
             // button3
             // 
@@ -231,51 +277,6 @@ namespace Pacienteapp
             this.textBox12.Size = new System.Drawing.Size(94, 23);
             this.textBox12.TabIndex = 8;
             // 
-            // LblPicture
-            // 
-            this.LblPicture.AutoSize = true;
-            this.LblPicture.Location = new System.Drawing.Point(3, 221);
-            this.LblPicture.Name = "LblPicture";
-            this.LblPicture.Size = new System.Drawing.Size(80, 15);
-            this.LblPicture.TabIndex = 13;
-            this.LblPicture.Text = "Foto de Perfil:";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.LblPictureShow, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.PbPerfil, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(418, 312);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.01242F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.98758F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(337, 161);
-            this.tableLayoutPanel2.TabIndex = 14;
-            // 
-            // LblPictureShow
-            // 
-            this.LblPictureShow.AutoSize = true;
-            this.LblPictureShow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblPictureShow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblPictureShow.Location = new System.Drawing.Point(3, 0);
-            this.LblPictureShow.Name = "LblPictureShow";
-            this.LblPictureShow.Size = new System.Drawing.Size(331, 29);
-            this.LblPictureShow.TabIndex = 0;
-            this.LblPictureShow.Text = "Foto de Perfil";
-            this.LblPictureShow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PbPerfil
-            // 
-            this.PbPerfil.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PbPerfil.Location = new System.Drawing.Point(3, 32);
-            this.PbPerfil.Name = "PbPerfil";
-            this.PbPerfil.Size = new System.Drawing.Size(331, 126);
-            this.PbPerfil.TabIndex = 1;
-            this.PbPerfil.TabStop = false;
-            // 
             // FrmMantenimientoCrearNuevoMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -286,11 +287,11 @@ namespace Pacienteapp
             this.Text = "Agregar Medicos";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbPerfil)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
