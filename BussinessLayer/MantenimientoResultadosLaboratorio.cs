@@ -23,9 +23,9 @@ namespace BussinessLayer
             return repository.Agregar(item);
         }
 
-        public bool Editar(ResultadosLaboratorio item)
+        public bool UpdateStatus(int status, int id, string resultado)
         {
-            return repository.Editar(item);
+            return repository.UpdateStatus(status, id, resultado);
         }
 
         public bool Eliminar(int id)
@@ -53,9 +53,14 @@ namespace BussinessLayer
             return repository.GetAllCompletedByCita(estadoResultado, idCita);
         }
 
-        public DataTable GetAllPending()
+        public DataTable GetAllPending(int status)
         {
-            return repository.EnlistarPendientes();
+            return repository.EnlistarPendientes(status);
+        }
+
+        public DataTable GetAllPendingByCedula(int status, string cedula)
+        {
+            return repository.EnlistarPendientesPorCedula(status, cedula);
         }
 
     }
