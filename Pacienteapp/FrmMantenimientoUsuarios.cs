@@ -110,7 +110,12 @@ namespace Pacienteapp
         {
             e.Cancel = true;
 
+            FrmHomeDisplay homeDisplay = FrmHomeDisplay.HomeDisplay;
+            homeDisplay.Show();
+
             this.Hide();
+
+
         }
 
         #endregion

@@ -34,6 +34,9 @@ namespace Pacienteapp
             this.DgvCitas = new System.Windows.Forms.DataGridView();
             this.BtnEditar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
+            this.BtnConsultar = new System.Windows.Forms.Button();
+            this.BtnConsultarResultado = new System.Windows.Forms.Button();
+            this.BtnVerResultados = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCitas)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +51,9 @@ namespace Pacienteapp
             this.tableLayoutPanel1.Controls.Add(this.DgvCitas, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.BtnEditar, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.BtnEliminar, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.BtnConsultar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnConsultarResultado, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnVerResultados, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -62,25 +68,35 @@ namespace Pacienteapp
             // 
             this.BtnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAgregar.AutoSize = true;
-            this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnAgregar.Location = new System.Drawing.Point(249, 30);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(240, 57);
             this.BtnAgregar.TabIndex = 0;
             this.BtnAgregar.Text = "Agregar Cita";
             this.BtnAgregar.UseVisualStyleBackColor = true;
-            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click_1);
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // DgvCitas
             // 
+            this.DgvCitas.AllowUserToAddRows = false;
+            this.DgvCitas.AllowUserToDeleteRows = false;
+            this.DgvCitas.AllowUserToOrderColumns = true;
+            this.DgvCitas.AllowUserToResizeColumns = false;
+            this.DgvCitas.AllowUserToResizeRows = false;
+            this.DgvCitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.DgvCitas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.DgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.DgvCitas, 3);
             this.DgvCitas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvCitas.Location = new System.Drawing.Point(3, 120);
             this.DgvCitas.Name = "DgvCitas";
+            this.DgvCitas.ReadOnly = true;
             this.DgvCitas.RowTemplate.Height = 25;
+            this.DgvCitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvCitas.Size = new System.Drawing.Size(733, 261);
             this.DgvCitas.TabIndex = 1;
+            this.DgvCitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCitas_CellClick);
             // 
             // BtnEditar
             // 
@@ -107,6 +123,50 @@ namespace Pacienteapp
             this.BtnEliminar.TabIndex = 3;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Visible = false;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            // 
+            // BtnConsultar
+            // 
+            this.BtnConsultar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnConsultar.AutoSize = true;
+            this.BtnConsultar.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnConsultar.Location = new System.Drawing.Point(3, 30);
+            this.BtnConsultar.Name = "BtnConsultar";
+            this.BtnConsultar.Size = new System.Drawing.Size(240, 56);
+            this.BtnConsultar.TabIndex = 4;
+            this.BtnConsultar.Text = "Consultar";
+            this.BtnConsultar.UseVisualStyleBackColor = true;
+            this.BtnConsultar.Visible = false;
+            this.BtnConsultar.Click += new System.EventHandler(this.BtnConsultar_Click);
+            // 
+            // BtnConsultarResultado
+            // 
+            this.BtnConsultarResultado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnConsultarResultado.AutoSize = true;
+            this.BtnConsultarResultado.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnConsultarResultado.Location = new System.Drawing.Point(495, 30);
+            this.BtnConsultarResultado.Name = "BtnConsultarResultado";
+            this.BtnConsultarResultado.Size = new System.Drawing.Size(241, 56);
+            this.BtnConsultarResultado.TabIndex = 5;
+            this.BtnConsultarResultado.Text = "Consultar resultados";
+            this.BtnConsultarResultado.UseVisualStyleBackColor = true;
+            this.BtnConsultarResultado.Visible = false;
+            this.BtnConsultarResultado.Click += new System.EventHandler(this.BtnConsultarResultado_Click);
+            // 
+            // BtnVerResultados
+            // 
+            this.BtnVerResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnVerResultados.AutoSize = true;
+            this.BtnVerResultados.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnVerResultados.Location = new System.Drawing.Point(249, 417);
+            this.BtnVerResultados.Name = "BtnVerResultados";
+            this.BtnVerResultados.Size = new System.Drawing.Size(240, 52);
+            this.BtnVerResultados.TabIndex = 6;
+            this.BtnVerResultados.Text = "Ver resultados";
+            this.BtnVerResultados.UseVisualStyleBackColor = true;
+            this.BtnVerResultados.Visible = false;
+            this.BtnVerResultados.Click += new System.EventHandler(this.BtnVerResultados_Click);
             // 
             // FrmMantenimientoCitas
             // 
@@ -117,6 +177,7 @@ namespace Pacienteapp
             this.Name = "FrmMantenimientoCitas";
             this.Text = "FrmMantenimientoCitas";
             this.Activated += new System.EventHandler(this.FrmMantenimientoCitas_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMantenimientoCitas_FormClosing);
             this.Load += new System.EventHandler(this.FrmMantenimientoCitas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -132,5 +193,8 @@ namespace Pacienteapp
         private System.Windows.Forms.DataGridView DgvCitas;
         private System.Windows.Forms.Button BtnEditar;
         private System.Windows.Forms.Button BtnEliminar;
+        private System.Windows.Forms.Button BtnConsultar;
+        private System.Windows.Forms.Button BtnConsultarResultado;
+        private System.Windows.Forms.Button BtnVerResultados;
     }
 }

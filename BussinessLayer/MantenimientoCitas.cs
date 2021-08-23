@@ -33,6 +33,11 @@ namespace BussinessLayer
             return repository.Eliminar(id);
         }
 
+        public bool UpdateStatus(int status, int id)
+        {
+            return repository.UpdateStatus(status, id);
+        }
+
         public Citas GetById(int id)
         {
             return repository.EnlistarUno(id);
