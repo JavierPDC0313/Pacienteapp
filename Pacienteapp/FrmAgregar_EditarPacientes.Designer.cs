@@ -32,12 +32,11 @@ namespace Pacienteapp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgregar_EditarPacientes));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtAlergias = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
-            this.txtFoto = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblTelefono = new System.Windows.Forms.Label();
@@ -47,10 +46,11 @@ namespace Pacienteapp
             this.lblFumador = new System.Windows.Forms.Label();
             this.lblAlergias = new System.Windows.Forms.Label();
             this.lblFoto = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.dTPFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSeleccionarFoto = new System.Windows.Forms.Button();
-            this.txtAlergias = new System.Windows.Forms.TextBox();
+            this.txtFoto = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cBoxFumador_OpcionSi = new System.Windows.Forms.CheckBox();
             this.cBoxFumador_OpcionNo = new System.Windows.Forms.CheckBox();
@@ -107,17 +107,27 @@ namespace Pacienteapp
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNombre.Location = new System.Drawing.Point(216, 30);
+            this.txtNombre.Location = new System.Drawing.Point(216, 27);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(346, 29);
             this.txtNombre.TabIndex = 0;
+            // 
+            // txtAlergias
+            // 
+            this.txtAlergias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAlergias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAlergias.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAlergias.Location = new System.Drawing.Point(216, 440);
+            this.txtAlergias.Name = "txtAlergias";
+            this.txtAlergias.Size = new System.Drawing.Size(346, 29);
+            this.txtAlergias.TabIndex = 0;
             // 
             // txtApellido
             // 
             this.txtApellido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtApellido.Location = new System.Drawing.Point(216, 89);
+            this.txtApellido.Location = new System.Drawing.Point(216, 86);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(346, 29);
             this.txtApellido.TabIndex = 0;
@@ -127,7 +137,7 @@ namespace Pacienteapp
             this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTelefono.Location = new System.Drawing.Point(216, 148);
+            this.txtTelefono.Location = new System.Drawing.Point(216, 145);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(346, 29);
             this.txtTelefono.TabIndex = 0;
@@ -137,7 +147,7 @@ namespace Pacienteapp
             this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDireccion.Location = new System.Drawing.Point(216, 207);
+            this.txtDireccion.Location = new System.Drawing.Point(216, 204);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(346, 29);
             this.txtDireccion.TabIndex = 0;
@@ -147,37 +157,10 @@ namespace Pacienteapp
             this.txtCedula.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCedula.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCedula.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCedula.Location = new System.Drawing.Point(216, 266);
+            this.txtCedula.Location = new System.Drawing.Point(216, 263);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(346, 29);
             this.txtCedula.TabIndex = 0;
-            // 
-            // txtFoto
-            // 
-            this.txtFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFoto.Enabled = false;
-            this.txtFoto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFoto.Location = new System.Drawing.Point(3, 15);
-            this.txtFoto.Name = "txtFoto";
-            this.txtFoto.ReadOnly = true;
-            this.txtFoto.Size = new System.Drawing.Size(285, 29);
-            this.txtFoto.TabIndex = 0;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuardar.BackColor = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnGuardar, 2);
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnGuardar.Location = new System.Drawing.Point(198, 554);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(181, 43);
-            this.btnGuardar.TabIndex = 1;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblNombre
             // 
@@ -278,6 +261,21 @@ namespace Pacienteapp
             this.lblFoto.TabIndex = 2;
             this.lblFoto.Text = "Foto:";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuardar.BackColor = System.Drawing.Color.Gainsboro;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnGuardar, 2);
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnGuardar.Location = new System.Drawing.Point(198, 554);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(181, 43);
+            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // dTPFechaNacimiento
             // 
             this.dTPFechaNacimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -287,6 +285,7 @@ namespace Pacienteapp
             this.dTPFechaNacimiento.Name = "dTPFechaNacimiento";
             this.dTPFechaNacimiento.Size = new System.Drawing.Size(346, 29);
             this.dTPFechaNacimiento.TabIndex = 4;
+            this.dTPFechaNacimiento.ValueChanged += new System.EventHandler(this.dTPFechaNacimiento_ValueChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -319,15 +318,17 @@ namespace Pacienteapp
             this.btnSeleccionarFoto.TabIndex = 6;
             this.btnSeleccionarFoto.UseVisualStyleBackColor = false;
             // 
-            // txtAlergias
+            // txtFoto
             // 
-            this.txtAlergias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAlergias.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAlergias.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAlergias.Location = new System.Drawing.Point(216, 440);
-            this.txtAlergias.Name = "txtAlergias";
-            this.txtAlergias.Size = new System.Drawing.Size(346, 29);
-            this.txtAlergias.TabIndex = 0;
+            this.txtFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFoto.Enabled = false;
+            this.txtFoto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFoto.Location = new System.Drawing.Point(3, 12);
+            this.txtFoto.Name = "txtFoto";
+            this.txtFoto.ReadOnly = true;
+            this.txtFoto.Size = new System.Drawing.Size(285, 29);
+            this.txtFoto.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
@@ -356,6 +357,7 @@ namespace Pacienteapp
             this.cBoxFumador_OpcionSi.TabIndex = 0;
             this.cBoxFumador_OpcionSi.Text = "Si";
             this.cBoxFumador_OpcionSi.UseVisualStyleBackColor = true;
+            this.cBoxFumador_OpcionSi.CheckedChanged += new System.EventHandler(this.cBoxFumador_OpcionSi_CheckedChanged);
             // 
             // cBoxFumador_OpcionNo
             // 
@@ -367,6 +369,7 @@ namespace Pacienteapp
             this.cBoxFumador_OpcionNo.TabIndex = 0;
             this.cBoxFumador_OpcionNo.Text = "No";
             this.cBoxFumador_OpcionNo.UseVisualStyleBackColor = true;
+            this.cBoxFumador_OpcionNo.CheckedChanged += new System.EventHandler(this.cBoxFumador_OpcionNo_CheckedChanged);
             // 
             // FrmAgregar_EditarPacientes
             // 
