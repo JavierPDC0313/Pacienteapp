@@ -124,7 +124,6 @@ namespace DatabaseLayer
             connection.Close();
 
             return lastId;
-
         }
 
         public DataTable EnlistarTodo()
