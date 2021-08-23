@@ -145,11 +145,18 @@ namespace Pacienteapp
 
         private void OpenHomeDisplay()
         {
-            homeDisplay = FrmHomeDisplay.HomeDisplay;
-            homeDisplay.TipoUsuario = ItemUsuario.TipoUsuario;
-            homeDisplay.Show();
+            if (ItemUsuario.TipoUsuario == "Administrador" || ItemUsuario.TipoUsuario == "Medico")
+            {
+                homeDisplay = FrmHomeDisplay.HomeDisplay;
+                homeDisplay.TipoUsuario = ItemUsuario.TipoUsuario;
+                homeDisplay.Show();
 
-            this.Hide();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Su usuario no tiene un rol asignado correctamente", "Error");
+            }
         }
         #endregion
     }
