@@ -205,7 +205,7 @@ namespace Pacienteapp
 
             ComboBoxItem Medico = new ComboBoxItem
             {
-                Text = "Médico",
+                Text = "Medico",
                 Value = 2
             };
 

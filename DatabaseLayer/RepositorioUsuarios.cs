@@ -93,6 +93,36 @@ namespace DatabaseLayer
             }
         }
 
+        public bool UserIsEmpty()
+        {
+            int lastId = 0;
+
+            connection.Open();
+
+            SqlCommand command = new SqlCommand("select max(u.Id) as Id from Usuarios u", connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lastId = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+            connection.Close();
+
+            if(lastId > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public Usuarios EnlistarPorUsuario(string nombreUsuario)
         {
             try
