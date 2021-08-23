@@ -223,11 +223,9 @@ namespace Pacienteapp
 
         private string GuardarFoto(string file)
         {
-            int id = Id == 0 ? mantenimiento.GetLastId() : Id.Value;
-            string directorio = @"Images\PacienteApp\\";
+            int id = mantenimiento.GetLastId() == 0 ? 0 : mantenimiento.GetLastId() + 1;
 
-            string directory = @"Images\Persona\" + id + "\\";
-
+            string directorio = @"Images\PacienteApp\personId_" + id + "\\";
             string[] fileNameSplit = file.Split('\\');
             string filename = fileNameSplit[(fileNameSplit.Length - 1)];
 
