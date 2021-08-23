@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -69,6 +70,11 @@ namespace Pacienteapp
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Accionar();
+        }
+
+        private void btnSeleccionarFoto_Click(object sender, EventArgs e)
+        {
+            AgregarFoto();
         }
         #endregion
 
@@ -201,6 +207,37 @@ namespace Pacienteapp
             mantenimientoPacientes.Show();
 
             this.Hide();
+        }
+
+        private void AgregarFoto()
+        {
+            DialogResult result = PicturesDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string file = PicturesDialog.FileName;
+
+                txtFoto.Text = GuardarFoto(file);
+            }
+        }
+
+        private string GuardarFoto(string file)
+        {
+            int id = Id == 0 ? mantenimiento.GetLastId() : Id.Value;
+            string directorio = @"Images\PacienteApp\\";
+
+            string directory = @"Images\Persona\" + id + "\\";
+
+            string[] fileNameSplit = file.Split('\\');
+            string filename = fileNameSplit[(fileNameSplit.Length - 1)];
+
+            mantenimiento.CrearDirectorio(directorio);
+
+            string destino = directorio + filename;
+
+            File.Copy(file, destino, true);
+
+            return destino;
         }
         #endregion
     }

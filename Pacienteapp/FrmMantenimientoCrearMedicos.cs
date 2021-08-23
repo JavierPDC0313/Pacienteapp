@@ -98,7 +98,7 @@ namespace Pacienteapp
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            SearchDgv(TxtBusqueda.Text, 5);
+            //SearchDgv(TxtBusqueda.Text, 5);
 
         }
 

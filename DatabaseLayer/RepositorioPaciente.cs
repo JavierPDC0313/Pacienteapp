@@ -65,7 +65,7 @@ namespace DatabaseLayer
         {
             Pacientes pacientes = new Pacientes();
 
-            SqlCommand sqlCommand = new SqlCommand("select * from Pacientes where Id = @id", connection);
+            SqlCommand sqlCommand = new SqlCommand("select p.Id, p.Nombre, p.Apellido, p.Telefono, p.Direccion, p.Cedula, Cast (p.FechaNacimiento as date),  CASE p.Fumador WHEN 1 THEN 'Si' ELSE 'No' END AS Fumador, p.Alergias, p.foto from Pacientes p where Id = @id", connection);
 
             sqlCommand.Parameters.AddWithValue("@id", id);
 
@@ -102,9 +102,34 @@ namespace DatabaseLayer
             }
         }
 
+        public int EnlistarUltimoId()
+        {
+            int lastId = 0;
+
+            connection.Open();
+
+            SqlCommand command = new SqlCommand("select max(p.Id) as Id from Pacientes p", connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lastId = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+
+            connection.Close();
+
+            return lastId;
+
+        }
+
         public DataTable EnlistarTodo()
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select p.Id, p.Nombre, p.Apellido, p.Telefono, p.Direccion, p.Cedula, p.FechaNacimiento,  CASE p.Fumador WHEN 1 THEN 'Si' ELSE 'No' END AS Fumador, p.Alergias, p.foto from Pacientes p", connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select p.Id, p.Nombre, p.Apellido, p.Telefono, p.Direccion, p.Cedula, Cast (p.FechaNacimiento as date),  CASE p.Fumador WHEN 1 THEN 'Si' ELSE 'No' END AS Fumador, p.Alergias, p.foto from Pacientes p", connection);
             return ObtenerDatos(sqlDataAdapter);
         }
         #endregion

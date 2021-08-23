@@ -1,4 +1,5 @@
 ﻿using BussinessLayer;
+using DatabaseLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,6 +57,7 @@ namespace Pacienteapp
         {
             if (e.RowIndex >= 0)
                 Id = Convert.ToInt32(DGVPantallaListado.Rows[e.RowIndex].Cells[0].Value);
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -139,6 +141,13 @@ namespace Pacienteapp
             {
                 MessageBox.Show("No se ha seleccionado ningun item", "Error");
             }
+        }
+
+        private void MostrarFoto()
+        {
+            Pacientes pacientes = mantenimiento.GetById(Id.Value);
+
+            FotoPaciente.ImageLocation = pacientes.Foto;
         }
         #endregion
     }
