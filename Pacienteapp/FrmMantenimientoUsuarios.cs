@@ -114,6 +114,8 @@ namespace Pacienteapp
             homeDisplay.Show();
 
             this.Hide();
+
+
         }
 
         #endregion

@@ -55,6 +55,7 @@ namespace DatabaseLayer
             return EjecutarConsulta(sqlCommand);
         }
 
+
         public ResultadosLaboratorio EnlistarUno(int id)
         {
             ResultadosLaboratorio citas = new ResultadosLaboratorio();
@@ -97,6 +98,25 @@ namespace DatabaseLayer
         {
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select rl.Id, pac.Nombre + ' ' + pac.Apellido 'NOMBRE PACIENTE', rl.IdCita, pl.Nombre, doc.Nombre + ' ' + doc.Apellido 'NOMBRE DOCTOR', rl.Resultado, rl.Estado_Resultado 'ESTADO', from Resultados_Laboratorio rl INNER JOIN Doctor doc ON (rl.IdDoctor = doc.Id) INNER JOIN Paciente pac ON (rl.IdPaciente = pac.Id) INNER JOIN PruebasLaboratorio pl ON (rl.IdPruebaLaboratorio = pl.Id)", connection);
             return ObtenerDatos(sqlDataAdapter);
+        }
+
+        public DataTable GetAllByPatient(int idPaciente)
+        {
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("select rl.Id, pa.Nombre +' '+ pa.Apellido 'Paciente', pl.Nombre 'Nombre de la prueba', er.descripcion 'Estado del resultado' from Resultados_Laboratorio rl join Pacientes pa on (rl.IdPaciente = pa.Id) join PruebasLaboratorio pl on (rl.IdPruebaLaboratorio = pl.Id) join Estado_Resultado er on (rl.Estado_Resultado = er.id) where rl.IdPaciente = @idPaciente", connection);
+
+            dataAdapter.SelectCommand.Parameters.AddWithValue("@idPaciente", idPaciente);
+
+            return ObtenerDatos(dataAdapter);
+        }
+
+        public DataTable GetAllCompletedByCita(int estadoResultado, int idCita)
+        {
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("select pl.Nombre 'Nombre de la prueba', er.descripcion 'Estado del resultado' from Resultados_Laboratorio rl join PruebasLaboratorio pl on (rl.IdPruebaLaboratorio = pl.Id) join Estado_Resultado er on (rl.Estado_Resultado = er.id) where rl.Estado_Resultado = @estadoResultado and  rl.IdCita = @idCita", connection);
+
+            dataAdapter.SelectCommand.Parameters.AddWithValue("@estadoResultado", estadoResultado);
+            dataAdapter.SelectCommand.Parameters.AddWithValue("@idCita", idCita);
+
+            return ObtenerDatos(dataAdapter);
         }
 
         public DataTable EnlistarPendientes()

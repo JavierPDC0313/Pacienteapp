@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BussinessLayer;
+using DatabaseLayer.Models;
 
 namespace Pacienteapp
 {
@@ -22,17 +23,23 @@ namespace Pacienteapp
 
         private bool isPacienteSelected;
 
-        private bool isMedicoSeleceted;
-
         public int Paciente_id { get; set; }
 
         public int Medico_id { get; set; }
 
-        private MantenimientoCitas _mantenimiento;
+        public bool isCancel { get; set; } 
+
+        private MantenimientoCitas _mantenimientoCitas;
+
+        private MantenimientoPacientes _mantenimientoPacientes;
+
+        private MantenimientoDoctores _mantenimientoDoctores;
 
         private ListadoPaciente_Medico _listarPacientes;
 
         private ListadoPaciente_Medico _listarMedicos;
+
+        private Agregar_EditarCitas _agregar_editar;
 
         private FrmMantenimientoCitas()
         {
@@ -42,7 +49,11 @@ namespace Pacienteapp
 
             SqlConnection connection = new SqlConnection(connectionString);
 
-            _mantenimiento = new MantenimientoCitas(connection);
+            _mantenimientoCitas = new MantenimientoCitas(connection);
+
+            _mantenimientoDoctores = new MantenimientoDoctores(connection);
+
+            _mantenimientoPacientes = new MantenimientoPacientes(connection);
         }
 
         public static FrmMantenimientoCitas Instancia { get; set; } = new FrmMantenimientoCitas();
@@ -54,21 +65,58 @@ namespace Pacienteapp
             {
                 id = Convert.ToInt32(DgvCitas.Rows[e.RowIndex].Cells[0].Value.ToString());
 
+                Citas cita = new Citas();
+                cita = _mantenimientoCitas.GetById(id.Value);
+
+                Paciente_id = cita.IdPaciente;
+
+                Medico_id = cita.IdDoctor;
+
                 BtnEditar.Visible = true;
                 BtnEliminar.Visible = true;
+
+                if (GetCitaStatus() == 1)
+                {
+                    BtnConsultar.Visible = true;
+                    BtnConsultarResultado.Visible = false;
+                    BtnVerResultados.Visible = false;
+                }
+                else if (GetCitaStatus() == 2)
+                {
+                    BtnConsultar.Visible = false;
+                    BtnConsultarResultado.Visible = true;
+                    BtnVerResultados.Visible = false;
+                }
+                else
+                {
+                    BtnConsultar.Visible = false;
+                    BtnConsultarResultado.Visible = false;
+                    BtnVerResultados.Visible = true;
+                }
+            }
+            else
+            {
+                BtnConsultar.Visible = false;
+                BtnConsultarResultado.Visible = false;
+                BtnEditar.Visible = false;
+                BtnEliminar.Visible = false;
+                BtnVerResultados.Visible = false;
             }
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            isCancel = false;
 
             isAdding = true;
+
+            isEdit = false;
 
             _listarPacientes = new ListadoPaciente_Medico();
 
             _listarPacientes.ShowDialog();
 
-            if (Paciente_id >= 0)
+            if (Paciente_id >= 0 && isCancel == false)
             {
                 isAdding = false;
 
@@ -78,26 +126,73 @@ namespace Pacienteapp
 
                 _listarMedicos.ShowDialog();
 
-                if (Medico_id >= 0)
+                if (Medico_id >= 0 && isCancel == false)
                 {
+                    isPacienteSelected = false;
 
+                    _agregar_editar = new Agregar_EditarCitas();
+                    _agregar_editar.ShowDialog();
                 }
             }
+
+        }
+
+        private void BtnConsultar_Click(object sender, EventArgs e)
+        {
+            FrmListadoPruebas_Resultados listado = new FrmListadoPruebas_Resultados(1);
+            listado.Show();
+            this.Hide();
+        }
+
+        private void BtnConsultarResultado_Click(object sender, EventArgs e)
+        {
+            FrmListadoPruebas_Resultados listado = new FrmListadoPruebas_Resultados(2);
+            listado.Show();
+            this.Hide();
+        }
+
+        private void BtnVerResultados_Click(object sender, EventArgs e)
+        {
+            FrmListadoPruebas_Resultados listado = new FrmListadoPruebas_Resultados(3);
+            listado.Show();
             this.Hide();
         }
 
         private void FrmMantenimientoCitas_Activated(object sender, EventArgs e)
         {
             LoadData();
-
-            isEdit = false;
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (id >= 0)
             {
+                isAdding = true;
 
+                isEdit = true;
+
+                _listarPacientes = new ListadoPaciente_Medico();
+
+                _listarPacientes.ShowDialog();
+
+                if (Paciente_id >= 0)
+                {
+                    isAdding = false;
+
+                    isPacienteSelected = true;
+
+                    _listarMedicos = new ListadoPaciente_Medico();
+
+                    _listarMedicos.ShowDialog();
+
+                    if (Medico_id >= 0)
+                    {
+                        isPacienteSelected = false;
+
+                        _agregar_editar = new Agregar_EditarCitas();
+                        _agregar_editar.ShowDialog();
+                    }
+                }
             }
             else
             {
@@ -113,7 +208,7 @@ namespace Pacienteapp
 
                 if (result == DialogResult.OK)
                 {
-                    _mantenimiento.Eliminar(GetSelectedItem());
+                    _mantenimientoCitas.Eliminar(GetSelectedItem());
 
                     MessageBox.Show("Cita eliminada satisfactoriamente!");
 
@@ -153,7 +248,7 @@ namespace Pacienteapp
 
         private void LoadData()
         {
-            DgvCitas.DataSource = _mantenimiento.GetAll();
+            DgvCitas.DataSource = _mantenimientoCitas.GetAll();
             DgvCitas.Columns[0].Visible = false;
             DgvCitas.ClearSelection();
         }
@@ -166,6 +261,14 @@ namespace Pacienteapp
         public bool GetIsPacienteSelected()
         {
             return isPacienteSelected;
+        }
+
+        private int GetCitaStatus()
+        {
+            Citas cita = new Citas();
+            cita = _mantenimientoCitas.GetById(id.Value);
+
+            return cita.Estado;
         }
 
         #endregion
