@@ -127,6 +127,7 @@ namespace Pacienteapp
             this.Name = "FrmMantenimientoUsuarios";
             this.Text = "Usuarios";
             this.Activated += new System.EventHandler(this.FrmMantenimientoUsuarios_Activated);
+            this.Deactivate += new System.EventHandler(this.FrmMantenimientoUsuarios_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMantenimientoUsuarios_FormClosing);
             this.Load += new System.EventHandler(this.FrmMantenimientoUsuarios_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
