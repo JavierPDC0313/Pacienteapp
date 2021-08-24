@@ -126,6 +126,13 @@ namespace Pacienteapp
 
             return Edit;
         }
+
+        private void MostrarFoto()
+        {
+            Pacientes pacientes = mantenimiento.GetById(Id.Value);
+
+            FotoPaciente.ImageLocation = pacientes.Foto;
+        }
     }
 }
 

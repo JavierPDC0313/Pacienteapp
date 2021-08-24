@@ -13,8 +13,10 @@ using System.Windows.Forms;
 
 namespace Pacienteapp
 {
-    public partial class FrmAgregar_EditarPacientes : Form
+    public sealed partial class FrmAgregar_EditarPacientes : Form
     {
+        public static FrmAgregar_EditarPacientes Agregar_EditarPacientes { get; set; } = new FrmAgregar_EditarPacientes();
+
         public string TipoAccionar;
         public int? Id;
         private bool DateChanged = false;
@@ -223,7 +225,7 @@ namespace Pacienteapp
         {
             int id = mantenimiento.GetLastId() == 0 ? 0 : mantenimiento.GetLastId() + 1;
 
-            string directorio = @"Images\PacienteApp\PacienteId_" + id + "\\";
+            string directorio = @"Images\PacienteApp\medicoId_" + id + "\\";
             string[] fileNameSplit = file.Split('\\');
             string filename = fileNameSplit[(fileNameSplit.Length - 1)];
 
