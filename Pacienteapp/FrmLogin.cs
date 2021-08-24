@@ -22,23 +22,11 @@ namespace Pacienteapp
 
         private ServicioLogin repository;
         private FrmHomeDisplay homeDisplay;
-        private Usuarios ItemUsuario;
-
-        private MantenimientoUsuarios _mantenimientos;
+        private Usuarios ItemUsuario; 
 
         private FrmLogin()
         {
             InitializeComponent();
-
-            string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            repository = new ServicioLogin(connection);
-
-            _mantenimientos = new MantenimientoUsuarios(connection);
-
-            User = false;
-            Password = false;
         }
 
         public static FrmLogin Login { get; set; } = new FrmLogin();
@@ -51,27 +39,13 @@ namespace Pacienteapp
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
+            LoadLogin();
             txtContraseño.UseSystemPasswordChar = true;
-
-            if (_mantenimientos.UserIsEmpty() == true)
-            {
-                Usuarios usuario = new Usuarios
-                {
-                    Id = 1,
-                    TipoUsuario = "Administrador",
-                    Nombre = "default",
-                    Apellido = "default",
-                    Correo = "default@hotmail.com",
-                    Nombre_Usuario = "default",
-                    Contraseña = "default"
-                };
-
-                _mantenimientos.Agregar(usuario);
-            }
         }
 
         private void FrmLogin_VisibleChanged(object sender, EventArgs e)
         {
+            LoadLogin();
             txtUsuario.Clear();
             txtContraseño.Clear();
         }
@@ -179,6 +153,17 @@ namespace Pacienteapp
             {
                 MessageBox.Show("Su usuario no tiene un rol asignado correctamente", "Error");
             }
+        }
+
+        private void LoadLogin()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            repository = new ServicioLogin(connection);
+
+            User = false;
+            Password = false;
         }
         #endregion
     }

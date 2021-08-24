@@ -35,11 +35,13 @@ namespace Pacienteapp
 
         private void FrmMantenimientoPacientes_Load(object sender, EventArgs e)
         {
+            btnUnselect.Visible = false;
             LoadList();
         }
 
         private void FrmMantenimientoPacientes_VisibleChanged(object sender, EventArgs e)
         {
+            btnUnselect.Visible = false;
             LoadList();
         }
 
@@ -55,8 +57,10 @@ namespace Pacienteapp
 
         private void DGVPantallaListado_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnUnselect.Visible = true;
             if (e.RowIndex >= 0)
                 Id = Convert.ToInt32(DGVPantallaListado.Rows[e.RowIndex].Cells[0].Value);
+            MostrarFoto();
 
         }
 
@@ -73,6 +77,13 @@ namespace Pacienteapp
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Eliminar();
+        }
+
+        private void btnUnselect_Click(object sender, EventArgs e)
+        {
+            DGVPantallaListado.ClearSelection();
+            Id = null;
+            btnUnselect.Visible = true;
         }
 
         #endregion
@@ -119,7 +130,7 @@ namespace Pacienteapp
 
         private void AbrirAgregar()
         {
-            FrmAdministrar = FrmAgregar_EditarPacientes.Agregar_EditarPacientes;
+            FrmAdministrar = new FrmAgregar_EditarPacientes();
             FrmAdministrar.TipoAccionar = "guardar";
             FrmAdministrar.Show();
 
@@ -130,7 +141,7 @@ namespace Pacienteapp
         {
             if (Id != null)
             {
-                FrmAdministrar = FrmAgregar_EditarPacientes.Agregar_EditarPacientes;
+                FrmAdministrar = new FrmAgregar_EditarPacientes();
                 FrmAdministrar.TipoAccionar = "editar";
                 FrmAdministrar.Id = Id;
                 FrmAdministrar.Show();
@@ -145,9 +156,12 @@ namespace Pacienteapp
 
         private void MostrarFoto()
         {
-            Pacientes pacientes = mantenimiento.GetById(Id.Value);
+            if (Id != null)
+            {
+                Pacientes pacientes = mantenimiento.GetById(Id.Value);
 
-            FotoPaciente.ImageLocation = pacientes.Foto;
+                FotoPaciente.ImageLocation = pacientes.Foto;
+            }
         }
         #endregion
     }

@@ -118,7 +118,7 @@ namespace Pacienteapp
             this.btnUnselect.TabIndex = 1;
             this.btnUnselect.Text = "Deseleccionar";
             this.btnUnselect.UseVisualStyleBackColor = false;
-            this.btnUnselect.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnUnselect.Click += new System.EventHandler(this.btnUnselect_Click);
             // 
             // btnEliminar
             // 

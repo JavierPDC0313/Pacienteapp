@@ -304,7 +304,7 @@ namespace Pacienteapp
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.10405F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.89595F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tableLayoutPanel2.Controls.Add(this.btnSeleccionarFoto, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtFoto, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -324,7 +324,7 @@ namespace Pacienteapp
             this.btnSeleccionarFoto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSeleccionarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSeleccionarFoto.Font = new System.Drawing.Font("Segoe Script", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSeleccionarFoto.Location = new System.Drawing.Point(269, 11);
+            this.btnSeleccionarFoto.Location = new System.Drawing.Point(268, 11);
             this.btnSeleccionarFoto.Name = "btnSeleccionarFoto";
             this.btnSeleccionarFoto.Size = new System.Drawing.Size(38, 32);
             this.btnSeleccionarFoto.TabIndex = 6;
@@ -340,7 +340,7 @@ namespace Pacienteapp
             this.txtFoto.Location = new System.Drawing.Point(3, 13);
             this.txtFoto.Name = "txtFoto";
             this.txtFoto.ReadOnly = true;
-            this.txtFoto.Size = new System.Drawing.Size(255, 29);
+            this.txtFoto.Size = new System.Drawing.Size(254, 29);
             this.txtFoto.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -390,7 +390,7 @@ namespace Pacienteapp
             // 
             // PicturesDialog
             // 
-            this.PicturesDialog.FileName = "openFileDialog1";
+            this.PicturesDialog.FileName = "foto_de_perfil";
             // 
             // FrmAgregar_EditarPacientes
             // 
