@@ -66,7 +66,7 @@ namespace Pacienteapp
 
                     string to = TxtCorreoUsuario.Text;
                     string subject = "Cuenta creada";
-                    string body = $"Felicidades {TxtNombre.Text}, tu cuenta fue creada con éxito!";
+                    string body = $"Felicidades {TxtNombre.Text}, tu cuenta: {TxtNombreUsuario.Text} fue creada con éxito!";
 
                     _email.SendEmail(to, subject, body);
 
