@@ -57,6 +57,7 @@ namespace Pacienteapp
         {
             if (e.RowIndex >= 0)
                 Id = Convert.ToInt32(DGVPantallaListado.Rows[e.RowIndex].Cells[0].Value);
+            MostrarFoto();
 
         }
 
@@ -119,7 +120,7 @@ namespace Pacienteapp
 
         private void AbrirAgregar()
         {
-            FrmAdministrar = FrmAgregar_EditarPacientes.Agregar_EditarPacientes;
+            FrmAdministrar = new FrmAgregar_EditarPacientes();
             FrmAdministrar.TipoAccionar = "guardar";
             FrmAdministrar.Show();
 
@@ -130,7 +131,7 @@ namespace Pacienteapp
         {
             if (Id != null)
             {
-                FrmAdministrar = FrmAgregar_EditarPacientes.Agregar_EditarPacientes;
+                FrmAdministrar = new FrmAgregar_EditarPacientes();
                 FrmAdministrar.TipoAccionar = "editar";
                 FrmAdministrar.Id = Id;
                 FrmAdministrar.Show();
