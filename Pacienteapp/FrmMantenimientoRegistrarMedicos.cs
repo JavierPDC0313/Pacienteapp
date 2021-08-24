@@ -124,9 +124,9 @@ namespace Pacienteapp
 
         private void MostrarFoto()
         {
-            Doctores doctores = _mantenimiento.GetById(id.Value);
+            //Doctores doctores = _mantenimiento.GetById(id.Value);
 
-            PbPerfil.ImageLocation = doctores.Foto;
+            //PbPerfil.ImageLocation = doctores.Foto;
         }
     }
 }

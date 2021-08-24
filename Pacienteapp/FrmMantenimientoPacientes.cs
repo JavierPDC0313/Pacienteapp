@@ -131,7 +131,6 @@ namespace Pacienteapp
         private void AbrirAgregar()
         {
             FrmAdministrar = new FrmAgregar_EditarPacientes();
-            FrmAdministrar.TipoAccionar = "guardar";
             FrmAdministrar.Show();
 
             this.Hide();
@@ -158,9 +157,17 @@ namespace Pacienteapp
         {
             if (Id != null)
             {
-                Pacientes pacientes = mantenimiento.GetById(Id.Value);
+                try
+                {
+                    Pacientes pacientes = mantenimiento.GetById(Id.Value);
 
-                FotoPaciente.ImageLocation = pacientes.Foto;
+                    FotoPaciente.ImageLocation = pacientes.Foto;
+                }
+                catch(Exception e)
+                {
+                    string direction = @"C: \Users\jorge\Documents\GitHub\Pacienteapp\\1200px - No_sign.svg.png";
+                    FotoPaciente.ImageLocation = direction;
+                }
             }
         }
         #endregion

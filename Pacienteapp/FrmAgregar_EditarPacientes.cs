@@ -15,8 +15,6 @@ namespace Pacienteapp
 {
     public sealed partial class FrmAgregar_EditarPacientes : Form
     {
-        public static FrmAgregar_EditarPacientes Agregar_EditarPacientes { get; set; } = new FrmAgregar_EditarPacientes();
-
         public string TipoAccionar;
         public int? Id;
         private bool DateChanged = false;
@@ -104,25 +102,7 @@ namespace Pacienteapp
         {
             if (CheckData() == true)
             {
-                if (TipoAccionar == "agregar")
-                {
-                    Pacientes pacientes = new Pacientes();
-
-                    pacientes.Nombre = txtNombre.Text;
-                    pacientes.Apellido = txtApellido.Text;
-                    pacientes.Telefono = txtTelefono.Text;
-                    pacientes.Direccion = txtDireccion.Text;
-                    pacientes.Cedula = txtCedula.Text;
-                    pacientes.FechaNacimiento = dTPFechaNacimiento.Value;
-                    pacientes.Fumador = cBoxFumador_OpcionSi.Checked ? 1 : 0;
-                    pacientes.Alergias = txtAlergias.Text;
-                    pacientes.Foto = txtFoto.Text;
-
-                    Done = mantenimiento.Agregar(pacientes);
-
-                    MensagePostEjecucion();
-                }
-                else if (TipoAccionar == "editar")
+                if (TipoAccionar == "editar")
                 {
                     Pacientes pacientes = mantenimiento.GetById(Id.Value);
 
@@ -140,6 +120,25 @@ namespace Pacienteapp
 
                     MensagePostEjecucion();
                     CerrarForm();
+                }
+                else
+                {
+                    Pacientes pacientes = new Pacientes();
+
+                    pacientes.Nombre = txtNombre.Text;
+                    pacientes.Apellido = txtApellido.Text;
+                    pacientes.Telefono = txtTelefono.Text;
+                    pacientes.Direccion = txtDireccion.Text;
+                    pacientes.Cedula = txtCedula.Text;
+                    pacientes.FechaNacimiento = dTPFechaNacimiento.Value;
+                    pacientes.Fumador = cBoxFumador_OpcionSi.Checked ? 1 : 0;
+                    pacientes.Alergias = txtAlergias.Text;
+                    pacientes.Foto = txtFoto.Text;
+
+                    Done = mantenimiento.Agregar(pacientes);
+
+                    MensagePostEjecucion();
+                    
                 }
             }
             else
@@ -225,7 +224,7 @@ namespace Pacienteapp
         {
             int id = mantenimiento.GetLastId() == 0 ? 0 : mantenimiento.GetLastId() + 1;
 
-            string directorio = @"Images\PacienteApp\medicoId_" + id + "\\";
+            string directorio = @"Images\PacienteApp\pacienteId_" + id + "\\";
             string[] fileNameSplit = file.Split('\\');
             string filename = fileNameSplit[(fileNameSplit.Length - 1)];
 
