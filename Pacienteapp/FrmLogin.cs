@@ -12,13 +12,14 @@ using System.Windows.Forms;
 
 namespace Pacienteapp
 {
-    public partial class FrmLogin : Form
+    public sealed partial class FrmLogin : Form
     {
         public static FrmLogin Login { get; set; } = new FrmLogin();
 
         private bool User, Password;
-        private string Usuario;
         private string Contraseño;
+
+        public string Usuario { get; set; }
 
         private ServicioLogin repository;
         private FrmHomeDisplay homeDisplay;
@@ -26,7 +27,7 @@ namespace Pacienteapp
 
         private MantenimientoUsuarios _mantenimientos;
 
-        public FrmLogin()
+        private FrmLogin()
         {
             InitializeComponent();
 

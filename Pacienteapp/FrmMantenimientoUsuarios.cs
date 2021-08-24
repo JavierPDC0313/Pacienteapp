@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinessLayer;
+using DatabaseLayer.Models;
 
 namespace Pacienteapp
 {
@@ -18,6 +19,8 @@ namespace Pacienteapp
         private int? id;
 
         private bool isEdit;
+
+        private bool LoginAgain;
 
         private MantenimientoUsuarios _mantenimiento;
 
@@ -51,7 +54,7 @@ namespace Pacienteapp
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            Agregar_Editar = new FrmAgregar_EditarUsuario();
+            Agregar_Editar = new FrmAgregar_EditarUsuario(false);
 
             Agregar_Editar.Show();
             this.Hide();
@@ -65,15 +68,29 @@ namespace Pacienteapp
             isEdit = false;
         }
 
+        private void FrmMantenimientoUsuarios_Deactivate(object sender, EventArgs e)
+        {
+            LoginAgain = false;
+        }
+
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (id >= 0)
             {
-                Agregar_Editar = new FrmAgregar_EditarUsuario();
+                Usuarios validar = new Usuarios();
+                validar = _mantenimiento.GetById(id.Value);
+
+                if (validar.Nombre_Usuario == FrmLogin.Login.Usuario)
+                {
+                    LoginAgain = true;
+                }
+
+                Agregar_Editar = new FrmAgregar_EditarUsuario(LoginAgain);
 
                 isEdit = true;
                 Agregar_Editar.Show();
                 this.Hide();
+
             }
             else
             {
@@ -89,9 +106,21 @@ namespace Pacienteapp
 
                 if (result == DialogResult.OK)
                 {
-                    _mantenimiento.Eliminar(GetSelectedItem());
+                    _mantenimiento.Eliminar(id.Value);
 
                     MessageBox.Show("Usuario eliminado satisfactoriamente!");
+
+                    Usuarios validar = new Usuarios();
+                    validar = _mantenimiento.GetById(id.Value);
+
+                    if (validar.Nombre_Usuario == FrmLogin.Login.Usuario)
+                    {
+                        MessageBox.Show("Este usuario fue eliminado, debe volver a iniciar sesion", "Advertencia");
+
+                        LoginAgain = true;
+
+                        this.Close();
+                    }
                 }
             }
             else
@@ -109,8 +138,15 @@ namespace Pacienteapp
         {
             e.Cancel = true;
 
-            FrmHomeDisplay homeDisplay = FrmHomeDisplay.HomeDisplay;
-            homeDisplay.Show();
+            if (LoginAgain == false)
+            {
+                FrmHomeDisplay homeDisplay = FrmHomeDisplay.HomeDisplay;
+                homeDisplay.Show();
+            }
+            else
+            {
+                FrmLogin.Login.Show();
+            }
 
             this.Hide();
         }

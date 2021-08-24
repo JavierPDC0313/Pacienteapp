@@ -16,11 +16,17 @@ namespace Pacienteapp
 {
     public partial class FrmAgregar_EditarUsuario : Form
     {
+        private string LoggedUserName;
+
+        private bool isLoggedUser;
+
+        private string LoggedPassword;
+
         MantenimientoUsuarios _mantenimiento;
 
         EmailSender _email;
 
-        public FrmAgregar_EditarUsuario()
+        public FrmAgregar_EditarUsuario(bool SameUser)
         {
             InitializeComponent();
 
@@ -31,6 +37,8 @@ namespace Pacienteapp
             _mantenimiento = new MantenimientoUsuarios(connection);
 
             _email = new EmailSender();
+
+            isLoggedUser = SameUser;
         }
         #region Events
         private void BtnGuardar_Click(object sender, EventArgs e)
@@ -104,14 +112,31 @@ namespace Pacienteapp
                 TxtContraseña.Text = editUser.Contraseña;
                 TxtConfirmarContraseña.Text = editUser.Contraseña;
                 CbxTipoUsuario.SelectedIndex = CbxTipoUsuario.FindStringExact(editUser.TipoUsuario);
+
+                LoggedUserName = editUser.Nombre_Usuario;
+                LoggedPassword = editUser.Contraseña;
             }
         }
 
         private void FrmAgregar_EditarUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            FrmMantenimientoUsuarios.Instancia.Show();
+            if (isLoggedUser == true && LoggedUserName != TxtNombreUsuario.Text)
+            {
+                MessageBox.Show("Has hecho un cambio en este usuario, vuelve a iniciar sesion", "Advertencia");
 
+                FrmLogin.Login.Show();
+            }
+            else if (isLoggedUser == true && LoggedPassword != TxtContraseña.Text)
+            {
+                MessageBox.Show("Has hecho un cambio en este usuario, vuelve a iniciar sesion", "Advertencia");
+
+                FrmLogin.Login.Show();
+            }
+            else
+            {
+                FrmMantenimientoUsuarios.Instancia.Show();
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
