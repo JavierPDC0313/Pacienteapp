@@ -13,10 +13,8 @@ using System.Windows.Forms;
 
 namespace Pacienteapp
 {
-    public sealed partial class FrmAgregar_EditarPacientes : Form
+    public partial class FrmAgregar_EditarPacientes : Form
     {
-        public static FrmAgregar_EditarPacientes Agregar_EditarPacientes { get; set; } = new FrmAgregar_EditarPacientes();
-
         public string TipoAccionar;
         public int? Id;
         private bool DateChanged = false;
