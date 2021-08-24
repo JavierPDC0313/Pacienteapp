@@ -225,7 +225,7 @@ namespace Pacienteapp
         {
             int id = mantenimiento.GetLastId() == 0 ? 0 : mantenimiento.GetLastId() + 1;
 
-            string directorio = @"Images\PacienteApp\personId_" + id + "\\";
+            string directorio = @"Images\PacienteApp\medicoId_" + id + "\\";
             string[] fileNameSplit = file.Split('\\');
             string filename = fileNameSplit[(fileNameSplit.Length - 1)];
 

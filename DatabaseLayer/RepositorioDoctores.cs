@@ -55,6 +55,30 @@ namespace DatabaseLayer
             return EjecutarConsulta(sqlCommand);
         }
 
+        public int EnlistarUltimoId()
+        {
+            int lastId = 0;
+
+            connection.Open();
+
+            SqlCommand command = new SqlCommand("select max(d.Id) as Id from Doctores d", connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lastId = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+
+            connection.Close();
+
+            return lastId;
+        }
+
         public Doctores EnlistarUno(int id)
         {
             Doctores doctores = new Doctores();
