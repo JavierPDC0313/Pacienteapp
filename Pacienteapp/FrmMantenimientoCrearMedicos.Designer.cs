@@ -66,7 +66,6 @@ namespace Pacienteapp
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(787, 432);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // DgvMedicosListado
             // 
@@ -80,7 +79,6 @@ namespace Pacienteapp
             this.DgvMedicosListado.RowTemplate.Height = 25;
             this.DgvMedicosListado.Size = new System.Drawing.Size(781, 257);
             this.DgvMedicosListado.TabIndex = 2;
-            this.DgvMedicosListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMedicosListado_CellClick);
             // 
             // BtnCrearNuevoMed
             // 
@@ -142,7 +140,6 @@ namespace Pacienteapp
             this.PbFotoDePerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbFotoDePerfil.TabIndex = 0;
             this.PbFotoDePerfil.TabStop = false;
-            this.PbFotoDePerfil.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // FrmMantenimientoCrearMedicos
             // 

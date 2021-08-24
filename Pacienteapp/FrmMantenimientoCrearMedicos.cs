@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BussinessLayer;
+using DatabaseLayer.Models;
 
 namespace Pacienteapp
 {
@@ -32,17 +33,6 @@ namespace Pacienteapp
         }
 
         public static FrmMantenimientoCrearMedicos Instancia { get; set; } = new FrmMantenimientoCrearMedicos();
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnEliminarM_Click(object sender, EventArgs e)
         {
             if (id >= 0)
@@ -64,13 +54,6 @@ namespace Pacienteapp
 
 
         }
-
-        private void BtnEditarM_Click(object sender, EventArgs e)
-        {
-
-            
-        }
-
         private void BtnEditarMedicos_Click(object sender, EventArgs e)
         {
             if (id >= 0)
@@ -100,26 +83,11 @@ namespace Pacienteapp
             this.Hide();
         }
 
-       
-        private void TxtBuscarMedicos_TextChanged(object sender, EventArgs e)
+        private void MostrarPicture()
         {
+            Doctores doctores = _mantenimiento.GetById(id.Value);
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-      
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DgvMedicosListado_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            PbFotoDePerfil.ImageLocation = doctores.Foto;
         }
     }
 

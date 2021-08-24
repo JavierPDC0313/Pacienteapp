@@ -27,11 +27,6 @@ namespace Pacienteapp
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void AddPhoto()
         {
             DialogResult result = PictureDialog.ShowDialog();
@@ -129,9 +124,9 @@ namespace Pacienteapp
 
         private void MostrarFoto()
         {
-            Pacientes pacientes = mantenimiento.GetById(Id.Value);
+            Doctores doctores = _mantenimiento.GetById(id.Value);
 
-            FotoPaciente.ImageLocation = pacientes.Foto;
+            PbPerfil.ImageLocation = doctores.Foto;
         }
     }
 }
