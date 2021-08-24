@@ -14,7 +14,6 @@ namespace Pacienteapp
 {
     public sealed partial class FrmLogin : Form
     {
-        public static FrmLogin Login { get; set; } = new FrmLogin();
 
         private bool User, Password;
         private string Contraseño;
@@ -41,6 +40,8 @@ namespace Pacienteapp
             User = false;
             Password = false;
         }
+
+        public static FrmLogin Login { get; set; } = new FrmLogin();
 
         #region Events
         private void cBoxVerContraseña_CheckedChanged(object sender, EventArgs e)

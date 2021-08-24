@@ -29,6 +29,7 @@ namespace Pacienteapp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgregar_EditarUsuario));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@ namespace Pacienteapp
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -87,86 +89,91 @@ namespace Pacienteapp
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.BackColor = System.Drawing.Color.Gainsboro;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(82, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 62);
+            this.label1.Size = new System.Drawing.Size(94, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.BackColor = System.Drawing.Color.Gainsboro;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 62);
+            this.label2.Location = new System.Drawing.Point(82, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 62);
+            this.label2.Size = new System.Drawing.Size(94, 30);
             this.label2.TabIndex = 1;
             this.label2.Text = "Apellido:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Gainsboro;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(3, 124);
+            this.label3.Location = new System.Drawing.Point(89, 140);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(252, 62);
+            this.label3.Size = new System.Drawing.Size(80, 30);
             this.label3.TabIndex = 2;
             this.label3.Text = "Correo:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.BackColor = System.Drawing.Color.Gainsboro;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 186);
+            this.label4.Location = new System.Drawing.Point(30, 202);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(252, 62);
+            this.label4.Size = new System.Drawing.Size(197, 30);
             this.label4.TabIndex = 3;
             this.label4.Text = "Nombre de usuario:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.BackColor = System.Drawing.Color.Gainsboro;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 248);
+            this.label5.Location = new System.Drawing.Point(67, 264);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(252, 62);
+            this.label5.Size = new System.Drawing.Size(123, 30);
             this.label5.TabIndex = 4;
             this.label5.Text = "Contraseña:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.BackColor = System.Drawing.Color.Gainsboro;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 310);
+            this.label6.Location = new System.Drawing.Point(18, 326);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(252, 62);
+            this.label6.Size = new System.Drawing.Size(221, 30);
             this.label6.TabIndex = 5;
             this.label6.Text = "Confirmar Contraseña:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.BackColor = System.Drawing.Color.Gainsboro;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(3, 372);
+            this.label7.Location = new System.Drawing.Point(47, 388);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(252, 62);
+            this.label7.Size = new System.Drawing.Size(163, 30);
             this.label7.TabIndex = 6;
             this.label7.Text = "Tipo de Usuario:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,16 +215,20 @@ namespace Pacienteapp
             this.TxtContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtContraseña.Location = new System.Drawing.Point(261, 267);
             this.TxtContraseña.Name = "TxtContraseña";
+            this.TxtContraseña.PasswordChar = '*';
             this.TxtContraseña.Size = new System.Drawing.Size(253, 23);
             this.TxtContraseña.TabIndex = 11;
+            this.TxtContraseña.UseSystemPasswordChar = true;
             // 
             // TxtConfirmarContraseña
             // 
             this.TxtConfirmarContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtConfirmarContraseña.Location = new System.Drawing.Point(261, 329);
             this.TxtConfirmarContraseña.Name = "TxtConfirmarContraseña";
+            this.TxtConfirmarContraseña.PasswordChar = '*';
             this.TxtConfirmarContraseña.Size = new System.Drawing.Size(253, 23);
             this.TxtConfirmarContraseña.TabIndex = 12;
+            this.TxtConfirmarContraseña.UseSystemPasswordChar = true;
             // 
             // CbxTipoUsuario
             // 
@@ -258,6 +269,8 @@ namespace Pacienteapp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(517, 496);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmAgregar_EditarUsuario";
