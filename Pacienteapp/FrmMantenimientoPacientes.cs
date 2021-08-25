@@ -141,7 +141,7 @@ namespace Pacienteapp
             if (Id != null)
             {
                 FrmAdministrar = new FrmAgregar_EditarPacientes();
-                FrmAdministrar.TipoAccionar = "editar";
+                FrmAdministrar.TipoAccionar = true;
                 FrmAdministrar.Id = Id;
                 FrmAdministrar.Show();
 

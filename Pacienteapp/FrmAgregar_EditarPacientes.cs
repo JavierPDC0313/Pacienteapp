@@ -15,7 +15,7 @@ namespace Pacienteapp
 {
     public sealed partial class FrmAgregar_EditarPacientes : Form
     {
-        public string TipoAccionar;
+        public bool TipoAccionar;
         public int? Id;
         private bool DateChanged = false;
         private bool Done;
@@ -102,7 +102,7 @@ namespace Pacienteapp
         {
             if (CheckData() == true)
             {
-                if (TipoAccionar == "editar")
+                if (TipoAccionar)
                 {
                     Pacientes pacientes = mantenimiento.GetById(Id.Value);
 
@@ -149,7 +149,7 @@ namespace Pacienteapp
 
         private void LoadComponets()
         {
-            if (TipoAccionar == "editar")
+            if (TipoAccionar)
             {
                 Pacientes pacientes = mantenimiento.GetById(Id.Value);
 
